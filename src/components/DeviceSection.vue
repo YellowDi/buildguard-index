@@ -1,36 +1,122 @@
+<script setup>
+import { computed, onBeforeUnmount, onMounted, ref } from "vue"
+
+const slides = [
+  {
+    key: "mobile",
+    label: "移动端",
+    title: "现场巡检",
+    description: "检测人员在现场完成拍照、记录、定位和问题提交。",
+  },
+  {
+    key: "web",
+    label: "管理端",
+    title: "后台调度",
+    description: "运营团队在后台查看进度、分派工单并跟踪整改闭环。",
+  },
+]
+
+const activeIndex = ref(0)
+let timer
+
+const activeSlide = computed(() => slides[activeIndex.value])
+
+function setActive(index) {
+  activeIndex.value = index
+  restartTimer()
+}
+
+function nextSlide() {
+  activeIndex.value = (activeIndex.value + 1) % slides.length
+}
+
+function restartTimer() {
+  window.clearInterval(timer)
+  timer = window.setInterval(nextSlide, 4200)
+}
+
+onMounted(restartTimer)
+
+onBeforeUnmount(() => {
+  window.clearInterval(timer)
+})
+</script>
+
 <template>
   <section id="workflow" class="device-section section-pad reveal-on-scroll">
     <div class="section-heading">
       <p class="eyebrow">多端协同</p>
       <h2>现场、后台和客户视图实时同步</h2>
     </div>
-    <div class="device-stage">
-      <div class="phone-mock">
-        <div class="phone-top"></div>
-        <h3>今日巡检</h3>
-        <p>南区 A 座 · 16 项待完成</p>
-        <div class="inspection-list">
-          <span class="done">结构外观</span>
-          <span class="done">消防通道</span>
-          <span>电梯机房</span>
-          <span>地下排水</span>
+
+    <div class="device-switcher" :class="`is-${activeSlide.key}`">
+      <div
+        v-for="slide in slides"
+        :key="slide.key"
+        class="device-slide"
+        :class="[`device-slide-${slide.key}`, { active: activeSlide.key === slide.key }]"
+        :aria-hidden="activeSlide.key !== slide.key"
+      >
+        <div v-if="slide.key === 'mobile'" class="device-photo mobile-photo">
+          <div class="desk-shape desk-pad"></div>
+          <div class="desk-shape desk-book"></div>
+          <div class="hand-shape"></div>
+          <div class="phone-screen">
+            <div class="phone-notch"></div>
+            <strong>今日巡检</strong>
+            <span>南区 A 座 · 16 项待完成</span>
+            <div class="phone-actions">
+              <b>结构</b>
+              <b>消防</b>
+              <b>机房</b>
+            </div>
+            <div class="phone-task done"></div>
+            <div class="phone-task"></div>
+            <div class="phone-nav"></div>
+          </div>
+        </div>
+
+        <div v-else class="device-photo web-photo">
+          <div class="laptop-screen">
+            <div class="laptop-sidebar">
+              <span></span><span></span><span></span><span></span>
+            </div>
+            <div class="laptop-main">
+              <div class="laptop-top"></div>
+              <div class="laptop-metrics">
+                <span></span><span></span><span></span>
+              </div>
+              <div class="laptop-chart">
+                <i style="--h: 46%"></i>
+                <i style="--h: 72%"></i>
+                <i style="--h: 38%"></i>
+                <i style="--h: 61%"></i>
+                <i style="--h: 54%"></i>
+                <i style="--h: 82%"></i>
+              </div>
+            </div>
+          </div>
+          <div class="laptop-base"></div>
         </div>
       </div>
-      <div class="web-mock">
-        <div class="mock-toolbar">
-          <span></span><span></span><span></span>
-        </div>
-        <div class="map-panel">
-          <div class="pin one"></div>
-          <div class="pin two"></div>
-          <div class="pin three"></div>
-        </div>
-        <div class="web-list">
-          <strong>巡检进度</strong>
-          <span style="--w: 86%">已采集现场记录</span>
-          <span style="--w: 64%">待复核风险项</span>
-          <span style="--w: 42%">报告生成</span>
-        </div>
+
+      <div class="device-caption">
+        <strong>{{ activeSlide.title }}</strong>
+        <span>{{ activeSlide.description }}</span>
+      </div>
+
+      <div class="device-tabs" role="tablist" aria-label="多端展示切换">
+        <button
+          v-for="(slide, index) in slides"
+          :key="slide.key"
+          type="button"
+          role="tab"
+          :aria-selected="activeSlide.key === slide.key"
+          :class="{ active: activeSlide.key === slide.key }"
+          @click="setActive(index)"
+        >
+          {{ slide.label }}
+        </button>
       </div>
     </div>
   </section>
