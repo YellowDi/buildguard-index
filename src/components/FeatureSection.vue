@@ -36,7 +36,7 @@ defineProps({
 </script>
 
 <template>
-  <section :id="id" class="split-section section-pad" :class="{ reverse }">
+  <section :id="id" class="split-section section-pad reveal-on-scroll" :class="{ reverse }">
     <div v-if="visual === 'work-order'" class="feature-visual work-order-visual">
       <div class="panel-card floating one">
         <span>风险项</span>

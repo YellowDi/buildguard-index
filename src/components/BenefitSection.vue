@@ -1,5 +1,5 @@
 <template>
-  <section id="benefits" class="benefit-section section-pad">
+  <section id="benefits" class="benefit-section section-pad reveal-on-scroll">
     <div class="section-heading">
       <p class="eyebrow">核心优势</p>
       <h2>为建筑安全检测团队设计，保持流程简单可靠</h2>

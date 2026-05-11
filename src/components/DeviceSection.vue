@@ -1,5 +1,5 @@
 <template>
-  <section id="workflow" class="device-section section-pad">
+  <section id="workflow" class="device-section section-pad reveal-on-scroll">
     <div class="section-heading">
       <p class="eyebrow">多端协同</p>
       <h2>现场、后台和客户视图实时同步</h2>

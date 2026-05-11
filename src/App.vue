@@ -1,4 +1,5 @@
 <script setup>
+import { onBeforeUnmount, onMounted } from "vue"
 import BenefitSection from "./components/BenefitSection.vue"
 import CtaSection from "./components/CtaSection.vue"
 import DashboardMockup from "./components/DashboardMockup.vue"
@@ -11,30 +12,67 @@ const logos = ["MetroWorks", "UrbanSafe", "Northline", "Stonefield", "CityOps", 
 
 const workOrderChips = ["任务派发", "现场照片", "整改闭环", "进度报表"]
 const reportChips = ["风险分级", "报告归档", "客户查看", "数据追溯"]
+
+let observer
+
+function updateHeroProgress() {
+  const progress = Math.min(window.scrollY / 520, 1)
+  document.documentElement.style.setProperty("--hero-scroll", progress.toFixed(3))
+}
+
+onMounted(() => {
+  updateHeroProgress()
+  window.addEventListener("scroll", updateHeroProgress, { passive: true })
+
+  observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible")
+          observer.unobserve(entry.target)
+        }
+      })
+    },
+    { rootMargin: "0px 0px -12% 0px", threshold: 0.16 },
+  )
+
+  document.querySelectorAll(".reveal-on-scroll").forEach((el) => observer.observe(el))
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener("scroll", updateHeroProgress)
+  observer?.disconnect()
+})
 </script>
 
 <template>
   <SiteHeader />
 
   <main id="top">
-    <section class="hero section-pad">
+    <section class="hero">
+      <div class="cloud-layer" aria-hidden="true">
+        <img class="cloud cloud-left" src="./assets/cloud-left.avif" alt="" />
+        <img class="cloud cloud-right" src="./assets/cloud-right.avif" alt="" />
+      </div>
       <div class="hero-copy">
-        <p class="eyebrow">建筑安全检测与运维管理平台</p>
-        <h1>让建筑安全检测像专业团队一样运转</h1>
-        <p class="hero-lead">
+        <p class="eyebrow hero-enter enter-1">建筑安全检测与运维管理平台</p>
+        <h1 class="hero-enter enter-2">让建筑安全检测像专业团队一样运转</h1>
+        <p class="hero-lead hero-enter enter-3">
           BuildGuard 将检测服务、巡检工单、现场记录、风险分级和报告管理放在同一套流程里，
           帮助团队减少沟通成本，稳定交付每一次建筑安全检测。
         </p>
-        <div class="hero-actions">
+        <div class="hero-actions hero-enter enter-4">
           <a class="button primary" href="#contact">开始了解</a>
           <a class="button secondary" href="#features">查看功能</a>
         </div>
       </div>
 
-      <DashboardMockup />
+      <div class="hero-dashboard-stage">
+        <DashboardMockup />
+      </div>
     </section>
 
-    <section class="logo-strip" aria-label="服务对象">
+    <section class="logo-strip reveal-on-scroll" aria-label="服务对象">
       <p>适用于物业集团、园区运营、检测机构与城市更新项目</p>
       <div class="logo-marquee">
         <span v-for="logo in logos" :key="logo">{{ logo }}</span>
