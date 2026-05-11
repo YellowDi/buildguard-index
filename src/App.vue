@@ -9,6 +9,7 @@ import SiteFooter from "./components/SiteFooter.vue"
 import SiteHeader from "./components/SiteHeader.vue"
 
 const logos = ["MetroWorks", "UrbanSafe", "Northline", "Stonefield", "CityOps", "CoreBuild"]
+const marqueeLogos = [...logos, ...logos]
 
 const workOrderChips = ["任务派发", "现场照片", "整改闭环", "进度报表"]
 const reportChips = ["风险分级", "报告归档", "客户查看", "数据追溯"]
@@ -72,10 +73,10 @@ onBeforeUnmount(() => {
       </div>
     </section>
 
-    <section class="logo-strip reveal-on-scroll" aria-label="服务对象">
+    <section class="logo-strip" aria-label="服务对象">
       <p>适用于物业集团、园区运营、检测机构与城市更新项目</p>
       <div class="logo-marquee">
-        <span v-for="logo in logos" :key="logo">{{ logo }}</span>
+        <span v-for="(logo, index) in marqueeLogos" :key="`${logo}-${index}`">{{ logo }}</span>
       </div>
     </section>
 

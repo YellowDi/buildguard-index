@@ -1022,13 +1022,11 @@ h3 {
 .hero {
   position: relative;
   width: 100%;
-  min-height: 930px;
+  min-height: 890px;
   margin: 0;
   padding: 170px 0 0;
   overflow: hidden;
-  background:
-    linear-gradient(180deg, rgba(174, 197, 223, 0) 0%, rgba(209, 219, 228, 0.72) 74%, #f5f1eb 100%),
-    linear-gradient(180deg, #a8c0dc 0%, #b8c9dc 58%, #d5dde5 100%);
+  background: linear-gradient(180deg, #9cc1e7 0%, #eddfd0 100%);
 }
 
 .hero::after {
@@ -1111,11 +1109,13 @@ h3 {
   position: relative;
   z-index: 3;
   width: min(1080px, calc(100% - 48px));
-  margin: 8px auto 0;
+  height: 500px;
+  margin: 12px auto 0;
+  overflow: hidden;
   transform-origin: 50% 0;
   transform:
     perspective(1200px)
-    translateY(calc(58px - (var(--hero-scroll) * 135px)))
+    translateY(calc(36px - (var(--hero-scroll) * 82px)))
     scale(calc(0.9 + (var(--hero-scroll) * 0.1)))
     rotateX(calc(7deg - (var(--hero-scroll) * 7deg)));
   transition-property: transform;
@@ -1137,9 +1137,15 @@ h3 {
 .logo-strip {
   position: relative;
   z-index: 4;
-  margin-top: -18px;
-  padding-top: 88px;
+  margin-top: 0;
+  padding: 64px 0 90px;
   background: #fff;
+}
+
+.logo-marquee {
+  width: max-content;
+  justify-content: flex-start;
+  animation: logoDrift 34s linear infinite;
 }
 
 .reveal-on-scroll {
@@ -1197,6 +1203,15 @@ h3 {
   }
   to {
     margin-left: 12px;
+  }
+}
+
+@keyframes logoDrift {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
   }
 }
 
@@ -1430,9 +1445,10 @@ h3 {
 
   .hero-dashboard-stage {
     width: min(920px, calc(100% - 28px));
+    height: 470px;
     transform:
       perspective(1000px)
-      translateY(calc(58px - (var(--hero-scroll) * 92px)))
+      translateY(calc(42px - (var(--hero-scroll) * 76px)))
       scale(calc(0.94 + (var(--hero-scroll) * 0.06)))
       rotateX(calc(5deg - (var(--hero-scroll) * 5deg)));
   }
@@ -1485,9 +1501,10 @@ h3 {
   .hero-dashboard-stage {
     margin-top: 44px;
     width: min(760px, calc(100% - 24px));
+    height: 420px;
     transform:
       perspective(850px)
-      translateY(calc(44px - (var(--hero-scroll) * 72px)))
+      translateY(calc(28px - (var(--hero-scroll) * 58px)))
       scale(calc(0.96 + (var(--hero-scroll) * 0.04)))
       rotateX(calc(4deg - (var(--hero-scroll) * 4deg)));
   }
