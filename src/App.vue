@@ -75,8 +75,10 @@ onBeforeUnmount(() => {
 
     <section class="logo-strip" aria-label="服务对象">
       <p>适用于物业集团、园区运营、检测机构与城市更新项目</p>
-      <div class="logo-marquee">
-        <span v-for="(logo, index) in marqueeLogos" :key="`${logo}-${index}`">{{ logo }}</span>
+      <div class="logo-marquee-window">
+        <div class="logo-marquee">
+          <span v-for="(logo, index) in marqueeLogos" :key="`${logo}-${index}`">{{ logo }}</span>
+        </div>
       </div>
     </section>
 

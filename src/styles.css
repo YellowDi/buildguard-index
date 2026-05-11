@@ -1142,6 +1142,34 @@ h3 {
   background: #fff;
 }
 
+.logo-marquee-window {
+  position: relative;
+  width: min(900px, calc(100% - 64px));
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.logo-marquee-window::before,
+.logo-marquee-window::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
+  width: 120px;
+  pointer-events: none;
+}
+
+.logo-marquee-window::before {
+  left: 0;
+  background: linear-gradient(90deg, #fff 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+.logo-marquee-window::after {
+  right: 0;
+  background: linear-gradient(270deg, #fff 0%, rgba(255, 255, 255, 0) 100%);
+}
+
 .logo-marquee {
   width: max-content;
   justify-content: flex-start;
@@ -1362,10 +1390,19 @@ h3 {
     padding: 12px 0;
   }
 
+  .logo-marquee-window {
+    width: min(100% - 24px, 560px);
+  }
+
+  .logo-marquee-window::before,
+  .logo-marquee-window::after {
+    width: 54px;
+  }
+
   .logo-marquee {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 18px;
+    display: flex;
+    grid-template-columns: none;
+    gap: 32px;
   }
 
   .device-section > *,
