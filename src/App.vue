@@ -51,8 +51,8 @@ onBeforeUnmount(() => {
   <main id="top">
     <section class="hero">
       <div class="cloud-layer" aria-hidden="true">
-        <img class="cloud cloud-left" src="./assets/cloud-left.avif" alt="" />
-        <img class="cloud cloud-right" src="./assets/cloud-right.avif" alt="" />
+        <img class="cloud cloud-left" src="./assets/cloud-right.avif" alt="" />
+        <img class="cloud cloud-right" src="./assets/cloud-left.avif" alt="" />
       </div>
       <div class="hero-copy">
         <p class="eyebrow hero-enter enter-1">建筑安全检测与运维管理平台</p>
