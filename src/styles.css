@@ -199,12 +199,12 @@ p {
   z-index: 2;
   width: min(100% - 60px, 1220px);
   margin: 0 auto;
-  padding-top: 184px;
+  padding-top: 208px;
 }
 
 .hero-title-block h1 {
   display: grid;
-  gap: 16px;
+  gap: 46px;
   margin: 0;
   color: #fff;
   font-size: 150px;
@@ -225,10 +225,15 @@ p {
   grid-template-columns: 260px minmax(0, 1fr) 330px;
   gap: 34px;
   align-items: start;
-  margin-top: 52px;
+  margin-top: -120px;
+  isolation: isolate;
 }
 
 .hero-proof {
+  position: relative;
+  z-index: 4;
+  grid-column: 1;
+  grid-row: 1;
   display: grid;
   align-content: start;
   min-height: 420px;
@@ -277,7 +282,11 @@ p {
 
 .hero-phone-stage {
   position: relative;
-  height: 764px;
+  z-index: 2;
+  grid-column: 1 / -1;
+  grid-row: 1;
+  height: 1165px;
+  pointer-events: none;
   transform:
     translateY(calc(var(--hero-scroll) * -26px))
     scale(calc(1 - (var(--hero-scroll) * 0.018)));
@@ -307,17 +316,25 @@ p {
   object-fit: cover;
 }
 
-.phone-hand {
+.hero-hand-mock {
   position: absolute;
   left: 50%;
-  bottom: -126px;
+  bottom: 44px;
   z-index: 2;
-  width: 830px;
-  height: auto;
-  object-fit: contain;
-  transform: translateX(-47%);
+  width: 776px;
+  height: 918px;
+  transform: translateX(-50%);
+}
+
+.phone-hand {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: none;
   pointer-events: none;
-  filter: drop-shadow(0 44px 70px rgba(18, 36, 68, 0.2));
 }
 
 .app-phone {
@@ -359,23 +376,24 @@ p {
 
 .hero-mock-phone {
   position: absolute;
-  left: 50%;
-  top: 0;
-  z-index: 3;
+  left: 83px;
+  top: 10px;
+  z-index: 4;
   width: 350px;
   height: 711px;
-  transform: translateX(-59%) rotate(-2.5deg);
-  transform-origin: 50% 50%;
-  filter: drop-shadow(0 34px 74px rgba(0, 20, 64, 0.24));
+  overflow: hidden;
+  border-radius: 31px;
+  transform: none;
 }
 
 .mock-phone-screen {
   position: absolute;
-  left: 19px;
-  top: 14px;
-  width: 312px;
-  height: 682px;
-  border-radius: 42px;
+  left: 4.57143%;
+  top: 1.20057%;
+  z-index: 1;
+  width: 91%;
+  height: 98%;
+  border-radius: 51px;
   object-fit: cover;
   object-position: top center;
 }
@@ -383,9 +401,10 @@ p {
 .mock-phone-shape {
   position: absolute;
   inset: 0;
+  z-index: 2;
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   pointer-events: none;
 }
 
@@ -595,21 +614,51 @@ p {
 }
 
 .badge-left {
-  left: 50px;
-  top: 464px;
-  transform: rotate(-9deg);
+  left: -93px;
+  top: 235px;
+  padding: 12px 28px;
+  border-radius: 28px 28px 0 28px;
+  transform: rotate(-11deg);
 }
 
 .badge-right {
-  right: 26px;
-  top: 246px;
-  transform: rotate(12deg);
+  left: 422px;
+  right: auto;
+  top: 55%;
+  width: 134px;
+  min-height: auto;
+  padding: 17px 26px;
+  border-radius: 28px 28px 28px 0;
+  transform: translateY(-50%) rotate(15.02deg);
+}
+
+.badge-new {
+  z-index: 8;
+  left: 56px;
+  top: 78px;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  min-height: 72px;
+  padding: 0;
+  border-radius: 999px;
+  color: #fff;
+  background: #0865ff;
+  font-size: 16px;
+  box-shadow:
+    0 0 0 6px #fff,
+    0 18px 44px rgba(14, 33, 75, 0.18);
+  transform: rotate(-9deg);
 }
 
 .hero-actions {
+  position: relative;
+  z-index: 4;
+  grid-column: 3;
+  grid-row: 1;
   display: grid;
   align-content: start;
-  padding-top: 206px;
+  padding-top: 260px;
 }
 
 .hero-actions p {
@@ -1687,28 +1736,61 @@ p {
     grid-template-columns: minmax(0, 1fr) minmax(380px, 1.2fr);
   }
 
-  .hero-phone-stage {
-    grid-column: 2;
-    grid-row: 1 / span 2;
+  .hero-proof {
+    grid-column: 1;
+    grid-row: 1;
   }
 
-  .phone-hand {
-    bottom: -112px;
-    width: 760px;
+  .hero-phone-stage {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    height: 760px;
+  }
+
+  .hero-hand-mock {
+    width: 553px;
+    height: 654px;
+    bottom: 44px;
   }
 
   .hero-mock-phone {
-    width: 318px;
-    height: 646px;
-    transform: translateX(-59%) rotate(-2.5deg);
+    left: 59px;
+    top: 7px;
+    width: 249px;
+    height: 506px;
+    transform: none;
   }
 
   .mock-phone-screen {
-    left: 17px;
-    top: 13px;
-    width: 284px;
-    height: 620px;
-    border-radius: 38px;
+    left: 4.57143%;
+    top: 1.20057%;
+    width: 91%;
+    height: 98%;
+    border-radius: 36px;
+  }
+
+  .badge-left {
+    left: -66px;
+    top: 167px;
+    padding: 10px 22px;
+  }
+
+  .badge-right {
+    left: 301px;
+    width: 110px;
+    padding: 13px 20px;
+  }
+
+  .badge-new {
+    left: 40px;
+    top: 56px;
+    width: 52px;
+    height: 52px;
+    min-height: 52px;
+    font-size: 12px;
+    box-shadow:
+      0 0 0 4px #fff,
+      0 16px 34px rgba(14, 33, 75, 0.16);
   }
 
   .hero-shot-main {
@@ -1723,6 +1805,8 @@ p {
   }
 
   .hero-actions {
+    grid-column: 2;
+    grid-row: 1;
     padding-top: 0;
   }
 
@@ -1813,6 +1897,8 @@ p {
   }
 
   .hero-title-block h1 {
+    position: relative;
+    z-index: 6;
     gap: 8px;
     font-size: 56px;
     line-height: 0.96;
@@ -1831,7 +1917,11 @@ p {
   }
 
   .hero-proof {
+    position: relative;
+    z-index: 6;
     order: 1;
+    grid-column: 1;
+    grid-row: auto;
     min-height: auto;
     text-align: center;
   }
@@ -1847,33 +1937,39 @@ p {
 
   .hero-phone-stage {
     order: 3;
-    grid-column: auto;
+    grid-column: 1;
     grid-row: auto;
-    width: min(100%, 360px);
-    height: 668px;
+    width: 100%;
+    height: 520px;
     margin: 26px auto 0;
   }
 
   .phone-hand {
+    display: block;
+  }
+
+  .hero-hand-mock {
     left: 50%;
-    bottom: -84px;
-    width: 650px;
-    transform: translateX(-48%);
+    bottom: 24px;
+    width: 359px;
+    height: 424px;
+    transform: translateX(-50%);
   }
 
   .hero-mock-phone {
-    top: 0;
-    width: min(78vw, 284px);
-    height: calc(min(78vw, 284px) * 2.031);
-    transform: translateX(-51%) rotate(-2deg);
+    left: 38px;
+    top: 5px;
+    width: 165px;
+    height: 335px;
+    transform: none;
   }
 
   .mock-phone-screen {
-    left: 4.9%;
-    top: 2%;
-    width: 89.2%;
-    height: 95.9%;
-    border-radius: 11.8%;
+    left: 4.57143%;
+    top: 1.20057%;
+    width: 91%;
+    height: 98%;
+    border-radius: 21px;
   }
 
   .hero-shot-main {
@@ -1887,13 +1983,26 @@ p {
   }
 
   .badge-left {
-    left: 50%;
-    top: 548px;
-    transform: translateX(-50%) rotate(-6deg);
+    left: -42px;
+    top: 153px;
+    transform: rotate(-11deg);
   }
 
   .badge-right {
     display: none;
+  }
+
+  .badge-new {
+    left: 26px;
+    top: 36px;
+    width: 42px;
+    height: 42px;
+    min-height: 42px;
+    padding: 0;
+    font-size: 10px;
+    box-shadow:
+      0 0 0 3px #fff,
+      0 12px 26px rgba(14, 33, 75, 0.16);
   }
 
   .hero-badge {
@@ -1902,8 +2011,18 @@ p {
     font-size: 11px;
   }
 
+  .badge-new {
+    min-height: 42px;
+    padding: 0;
+    font-size: 10px;
+  }
+
   .hero-actions {
+    position: relative;
+    z-index: 6;
     order: 2;
+    grid-column: 1;
+    grid-row: auto;
     text-align: center;
   }
 

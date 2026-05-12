@@ -193,17 +193,20 @@ onBeforeUnmount(() => {
           </div>
 
           <div class="hero-phone-stage hero-enter enter-3" aria-label="客户 App 手持截图展示">
-            <img class="phone-hand" :src="phoneHandUrl" alt="" aria-hidden="true" />
-            <div class="hero-mock-phone">
-              <img
-                class="mock-phone-screen"
-                :src="appHomeUrl"
-                alt="宝京云维客户 App 首页巡检报告界面"
-              />
-              <img class="mock-phone-shape" :src="phoneShapeUrl" alt="" aria-hidden="true" />
+            <div class="hero-hand-mock">
+              <img class="phone-hand" :src="phoneHandUrl" alt="" aria-hidden="true" />
+              <div class="hero-mock-phone">
+                <img
+                  class="mock-phone-screen"
+                  :src="appHomeUrl"
+                  alt="宝京云维客户 App 首页巡检报告界面"
+                />
+                <img class="mock-phone-shape" :src="phoneShapeUrl" alt="" aria-hidden="true" />
+              </div>
+              <span class="hero-badge badge-new">New!</span>
+              <span class="hero-badge badge-left">真实 App 截图</span>
+              <span class="hero-badge badge-right">风险清晰呈现</span>
             </div>
-            <span class="hero-badge badge-left">真实 App 截图</span>
-            <span class="hero-badge badge-right">风险清晰呈现</span>
           </div>
 
           <div class="hero-actions hero-enter enter-4">
