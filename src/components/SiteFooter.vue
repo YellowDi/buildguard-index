@@ -1,51 +1,59 @@
 <template>
-  <footer id="contact" class="site-footer reveal-on-scroll">
-    <div class="footer-gradient" aria-hidden="true"></div>
-    <img class="footer-cloud footer-cloud-left" src="../assets/cloud-right.avif" alt="" aria-hidden="true" />
-    <img class="footer-cloud footer-cloud-right" src="../assets/cloud-left.avif" alt="" aria-hidden="true" />
-
-    <section class="footer-cta" aria-labelledby="footer-cta-title">
-      <h2 id="footer-cta-title">准备开始使用</h2>
-      <p>把检测工单、现场记录和报告交付放进同一套清晰流程。</p>
-      <a class="button primary" href="mailto:ops@buildguard.cn">预约演示</a>
-    </section>
-
-    <div class="footer-panel">
-      <div class="footer-content">
-        <div class="footer-top">
-          <div class="footer-intro">
-            <a class="brand footer-brand" href="#top">
-              <span class="brand-mark"></span>
-              <span>宝京云维</span>
-            </a>
-            <p>建筑安全检测、巡检记录与运维管理平台。</p>
-            <div class="footer-social" aria-label="社交链接">
-              <a href="mailto:ops@buildguard.cn" aria-label="邮件联系">邮</a>
-              <a href="mailto:ops@buildguard.cn" aria-label="预约演示">约</a>
-            </div>
-          </div>
-
-          <nav class="footer-links" aria-label="页脚导航">
-            <div>
-              <strong>页面</strong>
-              <a href="#features">功能</a>
-              <a href="#workflow">场景</a>
-              <a href="#benefits">优势</a>
-            </div>
-            <div>
-              <strong>信息</strong>
-              <a href="mailto:ops@buildguard.cn">联系</a>
-              <a href="/privacy-policy.html">隐私政策</a>
-              <a href="/user-agreement.html">用户协议</a>
-            </div>
-          </nav>
-        </div>
-
-        <div class="footer-bottom">
-          <p>© 2026 宝京云维. All rights reserved.</p>
-          <a href="#top">回到顶部</a>
+  <footer id="cta" class="site-footer">
+    <section class="footer-cta reveal-on-scroll">
+      <div class="footer-phone" aria-hidden="true">
+        <div class="app-phone">
+          <div class="phone-notch"></div>
+          <h3>客户 App</h3>
+          <div class="footer-progress"><span></span></div>
+          <div class="footer-checks"><i></i><i></i></div>
         </div>
       </div>
+      <div class="footer-copy">
+        <h2>让客户下一次打开 App，就看懂服务进展</h2>
+        <p>把建筑检测报告、风险提醒和整改闭环做成更适合客户使用的移动端体验。</p>
+        <div class="footer-actions">
+          <a class="store-button dark" href="mailto:ops@buildguard.cn">预约演示</a>
+          <a class="store-button" href="mailto:ops@buildguard.cn">获取客户 App</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer-main reveal-on-scroll">
+      <div>
+        <a class="brand footer-brand" href="#top">
+          <span class="brand-mark"></span>
+          <span>宝京云维</span>
+        </a>
+        <p>客户 App 端建筑安全检测服务入口。</p>
+      </div>
+
+      <nav class="footer-links" aria-label="页脚导航">
+        <div>
+          <strong>Quick links</strong>
+          <a href="#top">首页</a>
+          <a href="#features">功能</a>
+          <a href="#workflow">流程</a>
+          <a href="#testimonials">客户反馈</a>
+        </div>
+        <div>
+          <strong>Support</strong>
+          <a href="#faq">常见问题</a>
+          <a href="mailto:ops@buildguard.cn">联系我们</a>
+          <a href="/privacy-policy.html">隐私政策</a>
+          <a href="/user-agreement.html">用户协议</a>
+        </div>
+        <div>
+          <strong>Contact us</strong>
+          <a href="mailto:ops@buildguard.cn">ops@buildguard.cn</a>
+          <a href="tel:+8613800000000">+86 138 0000 0000</a>
+        </div>
+      </nav>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 宝京云维. All rights reserved.</p>
+      <a href="#top">回到顶部</a>
     </div>
   </footer>
 </template>

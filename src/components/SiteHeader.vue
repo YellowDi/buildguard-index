@@ -6,10 +6,10 @@
     </a>
     <nav class="nav-links" aria-label="主导航">
       <a href="#features">功能</a>
-      <a href="#workflow">场景</a>
-      <a href="#benefits">优势</a>
-      <a href="#contact">联系</a>
+      <a href="#workflow">流程</a>
+      <a href="#testimonials">客户反馈</a>
+      <a href="#faq">问答</a>
     </nav>
-    <a class="nav-cta" href="#contact">预约演示</a>
+    <a class="nav-cta" href="#cta">获取 App</a>
   </header>
 </template>
