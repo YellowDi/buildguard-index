@@ -10,8 +10,8 @@
         </div>
       </div>
       <div class="footer-copy">
-        <h2>让客户下一次打开 App，就看懂服务进展</h2>
-        <p>把建筑检测报告、风险提醒和整改闭环做成更适合客户使用的移动端体验。</p>
+        <h2>让客户下一次打开 App，就看清建筑安全状态</h2>
+        <p>把建筑检测报告、风险提醒、整改建议和历史评估做成更适合客户使用的移动端体验。</p>
         <div class="footer-actions">
           <a class="store-button dark" href="mailto:ops@buildguard.cn">预约演示</a>
           <a class="store-button" href="mailto:ops@buildguard.cn">获取客户 App</a>

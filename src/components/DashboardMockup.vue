@@ -1,8 +1,8 @@
 <script setup>
-const menuItems = ["概览", "客户建筑", "检测工单", "检测计划", "整改跟踪", "报告中心"]
+const menuItems = ["概览", "客户建筑", "风险记录", "检测计划", "整改跟踪", "报告中心"]
 const metrics = [
   { label: "待检建筑", value: "128", delta: "+18.4%" },
-  { label: "进行中工单", value: "46", delta: "-6.2%", warning: true },
+  { label: "跟进中风险", value: "46", delta: "-6.2%", warning: true },
   { label: "已发现风险", value: "312", delta: "+11.8%" },
   { label: "报告归档", value: "860", delta: "+9.1%" },
 ]
@@ -15,7 +15,7 @@ const rows = [
 </script>
 
 <template>
-  <div class="dashboard-shell" aria-label="宝京云维后台概览示意图">
+  <div class="dashboard-shell" aria-label="宝京云维客户 App 概览示意图">
     <aside class="dash-sidebar">
       <div class="dash-logo">
         <span class="brand-mark small"></span>
@@ -38,10 +38,10 @@ const rows = [
     <div class="dash-main">
       <div class="dash-topbar">
         <div>
-          <span class="muted">上午好，运营团队</span>
+          <span class="muted">上午好，项目客户</span>
           <h2>建筑安全检测看板</h2>
         </div>
-        <div class="search-pill">搜索建筑、工单、客户</div>
+        <div class="search-pill">搜索建筑、风险、报告</div>
       </div>
 
       <div class="metric-grid">
@@ -65,7 +65,7 @@ const rows = [
 
         <section class="quick-card">
           <strong>快捷操作</strong>
-          <button type="button">创建工单</button>
+          <button type="button">查看风险</button>
           <button type="button">上传照片</button>
           <button type="button">生成报告</button>
           <button type="button">通知整改</button>
@@ -75,7 +75,7 @@ const rows = [
       <section class="table-card">
         <div class="card-head">
           <strong>正在处理</strong>
-          <span>8 个工单</span>
+          <span>8 条风险</span>
         </div>
         <div v-for="row in rows" :key="row.name" class="table-row">
           <span>{{ row.name }}</span>

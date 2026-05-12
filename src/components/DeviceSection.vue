@@ -4,15 +4,15 @@ import { computed, onBeforeUnmount, onMounted, ref } from "vue"
 const slides = [
   {
     key: "mobile",
-    label: "移动端",
-    title: "现场巡检",
-    description: "检测人员在现场完成拍照、记录、定位和问题提交。",
+    label: "安全首页",
+    title: "建筑概览",
+    description: "客户在首页查看建筑评分、健康状态、风险摘要和下次检测提醒。",
   },
   {
     key: "web",
-    label: "管理端",
-    title: "后台调度",
-    description: "运营团队在后台查看进度、分派工单并跟踪整改闭环。",
+    label: "风险详情",
+    title: "问题穿透",
+    description: "客户进入风险详情，核对问题位置、现场照片、判定标准和整改建议。",
   },
 ]
 
@@ -64,8 +64,8 @@ onBeforeUnmount(() => {
 <template>
   <section id="workflow" class="device-section section-pad reveal-on-scroll">
     <div class="section-heading">
-      <p class="eyebrow">多端协同</p>
-      <h2>现场、后台和客户视图实时同步</h2>
+      <p class="eyebrow">客户 App</p>
+      <h2>建筑概览与风险详情清晰呈现</h2>
     </div>
 
     <div ref="switcherRef" class="device-switcher" :class="`is-${activeSlide.key}`">
@@ -82,8 +82,8 @@ onBeforeUnmount(() => {
           <div class="hand-shape"></div>
           <div class="phone-screen">
             <div class="phone-notch"></div>
-            <strong>今日巡检</strong>
-            <span>南区 A 座 · 16 项待完成</span>
+            <strong>安全评估</strong>
+            <span>南区 A 座 · 16 项风险记录</span>
             <div class="phone-actions">
               <b>结构</b>
               <b>消防</b>
@@ -119,7 +119,7 @@ onBeforeUnmount(() => {
         </div>
       </div>
 
-      <div class="device-tabs" role="tablist" aria-label="多端展示切换">
+      <div class="device-tabs" role="tablist" aria-label="客户 App 展示切换">
         <button
           v-for="(slide, index) in slides"
           :key="slide.key"

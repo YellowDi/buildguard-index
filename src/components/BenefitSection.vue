@@ -15,16 +15,16 @@ const tickerLogos = [...integrationLogos, ...integrationLogos]
 
 const supportItems = [
   {
-    title: "实时协同",
-    text: "工单状态、风险等级和处理人及时更新，管理者可以快速判断项目是否按计划推进。",
+    title: "风险状态清晰",
+    text: "风险等级、处理状态和结果说明持续更新，客户可以快速判断建筑是否需要重点关注。",
   },
   {
-    title: "本地化业务设置",
-    text: "支持检测模板、分类、角色权限和服务配置，适配不同机构的检查标准。",
+    title: "适配不同建筑",
+    text: "支持不同建筑类型、检测分类和服务内容，让客户看到与自身资产匹配的安全信息。",
   },
   {
-    title: "多视图管理",
-    text: "列表、详情、日历和统计看板服务不同岗位，让运营、检测和客户各取所需。",
+    title: "多维信息查看",
+    text: "首页、详情、历史和服务日历承接不同查看场景，让客户快速找到所需信息。",
   },
 ]
 </script>
@@ -33,15 +33,15 @@ const supportItems = [
   <section id="benefits" class="benefit-section section-pad reveal-on-scroll">
     <div class="section-heading benefit-heading">
       <p class="eyebrow">核心优势</p>
-      <h2>为检测团队而建，以简单流程驱动</h2>
+      <h2>为客户查看建筑安全而建</h2>
       <p>
-        系统围绕检测机构和运维团队的日常工作展开，不堆功能，用清晰的数据结构支撑稳定交付。
+        客户 App 围绕建筑状态、风险证据、整改建议和历史服务记录展开，用清晰结构降低理解成本。
       </p>
     </div>
 
     <div class="benefit-showcase">
       <article class="benefit-card customization-card">
-        <h3>围绕你的业务流程灵活配置</h3>
+        <h3>围绕客户资产清晰呈现</h3>
         <div class="customization-visual" aria-hidden="true">
           <div class="placeholder-panel">
             <div class="placeholder-swatches">
@@ -60,12 +60,12 @@ const supportItems = [
           </div>
         </div>
         <p>
-          <strong>定制每个细节</strong>，从客户、建筑、服务、计划、工单到报告字段，都能贴合团队已有的检测交付方式。
+          <strong>聚合关键内容</strong>，从客户、建筑、服务、计划到报告字段，都能贴合客户查看安全状态的方式。
         </p>
       </article>
 
       <article class="benefit-card integration-card">
-        <h3>连接现场与管理端</h3>
+        <h3>连接评估结果与客户服务</h3>
         <div class="integration-marquee" aria-hidden="true">
           <div class="integration-track">
             <span
@@ -78,7 +78,7 @@ const supportItems = [
             </span>
           </div>
         </div>
-        <p><strong>无缝协作</strong>，把现场采集、消息通知、报告归档与后台调度接在一起，减少口头转述和重复录入。</p>
+        <p><strong>信息集中</strong>，把现场照片、消息通知、报告归档与整改建议放到客户 App，减少反复沟通。</p>
       </article>
 
       <div class="benefit-support-grid">

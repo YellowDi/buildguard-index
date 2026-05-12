@@ -11,67 +11,67 @@ const heroAvatars = ["管", "业", "维"]
 
 const stats = [
   { value: "36k+", label: "报告在线查看" },
-  { value: "17k+", label: "整改进度同步" },
+  { value: "17k+", label: "风险跟进记录" },
   { value: "2k+", label: "项目客户使用" },
 ]
 
 const analyticsItems = [
   {
-    title: "风险进度",
-    text: "检测结论、风险等级和整改节点同步呈现。",
+    title: "风险详情",
+    text: "风险等级、问题位置、现场照片和整改建议集中呈现。",
   },
   {
-    title: "报告归档",
-    text: "历史报告和现场照片随时查看，不再翻找文件。",
+    title: "历史评估",
+    text: "每次检测记录长期归档，复查时可以快速对照。",
   },
 ]
 
 const featureCards = [
   {
-    title: "检测报告随时看",
-    text: "客户在手机端查看评估结论、风险项、现场照片和整改建议。",
+    title: "建筑安全首页",
+    text: "建筑切换、健康评分、健康状态和风险摘要集中在首页展示。",
     tone: "blue",
   },
   {
-    title: "整改节点不遗漏",
-    text: "每个问题都有处理状态、责任人和时间线，闭环过程清晰可追踪。",
+    title: "风险问题穿透",
+    text: "从异常分类进入具体问题点，查看扣分原因、位置描述和现场照片。",
     tone: "red",
   },
   {
-    title: "消息提醒及时到达",
-    text: "报告出具、风险升级、整改更新都能第一时间触达客户。",
+    title: "整改建议明确",
+    text: "高危问题优先标记，并给出整改措施、建议时限和专家/AI 综合建议。",
     tone: "green",
   },
   {
-    title: "项目资料统一沉淀",
-    text: "建筑档案、检测记录和后续服务都收在一个 App 里。",
+    title: "历史与服务留存",
+    text: "历史评估、下次检测提醒、报修入口和资产套餐信息统一留存。",
     tone: "violet",
   },
 ]
 
 const steps = [
   {
-    title: "绑定项目",
-    text: "客户通过手机号或项目码绑定建筑项目，快速进入专属服务空间。",
+    title: "选择建筑",
+    text: "客户进入 App 后切换名下园区或建筑，查看对应的最新安全状态。",
   },
   {
-    title: "查看进度",
-    text: "检测排期、现场执行、报告生成和整改处理都能在 App 中实时查看。",
+    title: "查看风险",
+    text: "从评分、异常分类和风险摘要进入问题详情，核对照片、标准和位置。",
   },
   {
-    title: "完成闭环",
-    text: "客户确认问题、跟踪整改结果，并长期保留所有检测资料。",
+    title: "跟进整改",
+    text: "根据建议时限和处理状态持续跟进，并长期保留评估记录。",
   },
 ]
 
 const reasons = [
   {
     title: "客户视角清晰",
-    text: "把专业检测过程转成客户能快速理解的进度、评分和风险说明。",
+    text: "把专业检测结论转成客户能快速理解的评分、风险说明和整改重点。",
   },
   {
-    title: "实时同步状态",
-    text: "工单、报告和整改更新后，客户 App 端立即同步最新状态。",
+    title: "风险状态清楚",
+    text: "报告、风险项和整改结果更新后，客户 App 端展示最新状态。",
   },
   {
     title: "一键查看报告",
@@ -86,8 +86,8 @@ const reasons = [
 const storyCards = [
   {
     label: "风险提醒",
-    title: "发现高风险问题时，客户马上知道",
-    text: "App 会把风险等级、问题位置、现场照片和建议动作放在同一张卡片里，客户无需等待人工汇总。",
+    title: "发现高风险问题时，客户看得明白",
+    text: "App 会把风险等级、问题位置、现场照片和建议动作放在同一张卡片里，客户可以直接判断处理优先级。",
   },
   {
     label: "报告交付",
@@ -105,7 +105,7 @@ const testimonials = [
   {
     quote: "风险项展示比 PDF 更直观，照片、位置、整改建议都在一起，客户沟通效率明显提高。",
     name: "周工",
-    role: "检测机构运营",
+    role: "项目服务顾问",
   },
   {
     quote: "我们最看重历史档案。后续复查时，客户能快速回看上次问题和整改结果。",
@@ -114,25 +114,25 @@ const testimonials = [
   },
 ]
 
-const clientLogos = ["物业集团", "园区运营", "业委会", "商业楼宇", "资产管理", "城市更新", "检测机构"]
+const clientLogos = ["物业集团", "园区客户", "业委会", "商业楼宇", "资产管理", "城市更新", "企业客户"]
 const clientTicker = [...clientLogos, ...clientLogos]
 
 const faqs = [
   {
-    q: "客户 App 主要给谁使用？",
-    a: "面向业主、物业负责人、资产方和项目客户，用来查看检测进度、报告、风险项和整改结果。",
+    q: "客户 App 能查看哪些建筑信息？",
+    a: "可以查看名下园区或建筑的健康评分、健康状态、风险摘要、历史评估和服务信息。",
   },
   {
-    q: "报告内容会和后台同步吗？",
-    a: "会。后台生成或更新检测报告后，客户 App 端会同步展示结论、图片、风险等级和建议。",
+    q: "风险点能看到现场照片吗？",
+    a: "可以。风险详情会展示问题位置、现场照片或视频、判定标准和整改建议，便于客户核对。",
   },
   {
-    q: "客户能看到整改进度吗？",
-    a: "可以。每个风险项都能呈现处理状态、更新时间和结果说明，便于客户持续跟进。",
+    q: "历史检测报告会保留吗？",
+    a: "会。历史评估记录会按建筑归档，客户可以回看评分变化、风险项和整改结果。",
   },
   {
-    q: "是否支持多项目客户？",
-    a: "支持。客户可在 App 内切换不同建筑项目，分别查看资料、报告和服务状态。",
+    q: "客户可以发起报修吗？",
+    a: "可以。客户可在 App 内提交报修内容、位置描述和现场照片，并查看后续处理状态。",
   },
 ]
 
@@ -177,19 +177,19 @@ onBeforeUnmount(() => {
       <div class="hero-container hero-enter enter-1">
         <div class="hero-title-block">
           <h1 id="hero-title">
-            <span>客户验房</span>
-            <span>就在掌上</span>
+            <span>建筑安全</span>
+            <span>随时掌握</span>
           </h1>
         </div>
 
         <div class="hero-lower">
           <div class="hero-proof hero-enter enter-2">
-            <p>把检测报告、风险提醒和整改进度，交给客户随时查看。</p>
+            <p>宝京云维将安全评分、风险点、现场照片、整改建议和历史报告集中到客户 App。</p>
             <div class="avatar-row" aria-label="客户使用者">
               <span v-for="avatar in heroAvatars" :key="avatar">{{ avatar }}</span>
             </div>
-            <strong>Trusted by</strong>
-            <small>2,000+ 项目客户持续使用</small>
+            <strong>项目客户持续使用</strong>
+            <small>服务业主、物业和资产管理场景</small>
           </div>
 
           <div class="hero-phone-stage hero-enter enter-3" aria-label="客户 App 手持截图展示">
@@ -203,11 +203,11 @@ onBeforeUnmount(() => {
               <img class="mock-phone-shape" :src="phoneShapeUrl" alt="" aria-hidden="true" />
             </div>
             <span class="hero-badge badge-left">真实 App 截图</span>
-            <span class="hero-badge badge-right">风险实时同步</span>
+            <span class="hero-badge badge-right">风险清晰呈现</span>
           </div>
 
           <div class="hero-actions hero-enter enter-4">
-            <p>客户不需要理解后台流程，只需要打开 App，就能看清每一步。</p>
+            <p>帮助业主、物业和资产方清晰了解建筑安全状态。</p>
             <div>
               <a class="store-button" href="#cta" aria-label="获取 iOS 客户 App">
                 <span>●</span>
@@ -225,8 +225,8 @@ onBeforeUnmount(() => {
 
     <section class="stats-section" aria-label="客户 App 使用数据">
       <div class="stats-intro reveal-on-scroll">
-        <h2>让客户持续看见服务价值</h2>
-        <p>从检测开始到整改闭环，客户 App 把专业服务过程变成清晰、可信、可追踪的体验。</p>
+        <h2>让建筑安全状态清晰可见</h2>
+        <p>从评估结论到整改建议，客户 App 把专业检测服务变成清晰、可信、可追踪的体验。</p>
       </div>
       <div class="stats-grid reveal-on-scroll">
         <article v-for="stat in stats" :key="stat.label">
@@ -244,8 +244,8 @@ onBeforeUnmount(() => {
         </figure>
       </div>
       <div class="analytics-copy">
-        <h2>实时数据，让客户放心跟进</h2>
-        <p>客户随时查看检测进展、风险数量、报告状态和整改进度，不再依赖人工转述。</p>
+        <h2>关键风险，让客户放心跟进</h2>
+        <p>客户随时查看安全评分、风险数量、问题位置、现场照片和整改建议，不再依赖零散沟通。</p>
         <div class="analytics-items">
           <article v-for="item in analyticsItems" :key="item.title">
             <span></span>
@@ -259,9 +259,9 @@ onBeforeUnmount(() => {
 
     <section id="app-features" class="feature-section section-shell">
       <div class="section-heading reveal-on-scroll">
-        <a class="text-link" href="#cta">Explore more features</a>
+        <a class="text-link" href="#cta">查看客户 App</a>
         <h2>客户 App 的核心功能</h2>
-        <p>参考 Upwize 的功能卡节奏，用更轻的界面把客户最关心的信息放到前面。</p>
+        <p>围绕客户最关心的建筑状态、风险证据、整改建议和历史服务记录组织信息。</p>
       </div>
       <div class="feature-card-grid">
         <article
@@ -283,9 +283,9 @@ onBeforeUnmount(() => {
 
     <section id="workflow" class="steps-section section-shell reveal-on-scroll">
       <div class="section-heading center">
-        <span class="pill-label">Get started</span>
-        <h2>三步完成客户服务闭环</h2>
-        <p>让客户 App 只承接必要动作，流程越简单，客户越愿意持续使用。</p>
+        <span class="pill-label">使用路径</span>
+        <h2>三步看清建筑安全状态</h2>
+        <p>客户打开 App 后，即可从建筑概览进入风险详情，再持续跟进整改结果。</p>
       </div>
       <div class="steps-grid">
         <article v-for="(step, index) in steps" :key="step.title">
@@ -340,7 +340,7 @@ onBeforeUnmount(() => {
           <span class="pill-label">{{ story.label }}</span>
           <h2>{{ story.title }}</h2>
           <p>{{ story.text }}</p>
-          <a class="text-link" href="#cta">Explore more features</a>
+          <a class="text-link" href="#cta">了解客户 App</a>
         </div>
       </article>
     </section>
@@ -375,7 +375,7 @@ onBeforeUnmount(() => {
     <section id="faq" class="faq-section section-shell reveal-on-scroll">
       <div class="faq-aside">
         <h2>Questions<br />and answers</h2>
-        <p>客户 App 的定位、同步和项目管理方式。</p>
+        <p>客户 App 的建筑信息、风险证据、历史报告和报修方式。</p>
         <a class="button primary" href="#cta">联系我们</a>
       </div>
       <div class="faq-list">

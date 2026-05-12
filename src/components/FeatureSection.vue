@@ -39,9 +39,9 @@ defineProps({
   <section :id="id" class="split-section section-pad reveal-on-scroll" :class="{ reverse }">
     <div v-if="visual === 'work-order'" class="feature-visual work-order-visual">
       <div class="feature-product-card project-product-card">
-        <h3>检测工单</h3>
+        <h3>风险记录</h3>
         <div class="project-toolbar">
-          <span>搜索建筑或工单...</span>
+          <span>搜索建筑或风险...</span>
           <b>筛选</b>
         </div>
         <div class="project-group-head">
@@ -52,7 +52,7 @@ defineProps({
           <span>项目</span>
           <span>风险</span>
           <span>客户</span>
-          <span>负责人</span>
+          <span>状态</span>
         </div>
         <div class="project-row high">
           <span>幕墙安全复核</span><b>高</b><i></i><em></em>
