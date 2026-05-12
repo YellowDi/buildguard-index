@@ -17,9 +17,21 @@ const slides = [
 ]
 
 const activeIndex = ref(0)
+const switcherRef = ref(null)
 let timer
 
 const activeSlide = computed(() => slides[activeIndex.value])
+
+function updateDeviceProgress() {
+  if (!switcherRef.value) return
+
+  const rect = switcherRef.value.getBoundingClientRect()
+  const viewportHeight = window.innerHeight || 1
+  const rawProgress = (viewportHeight - rect.top) / (viewportHeight + rect.height)
+  const progress = Math.min(Math.max(rawProgress, 0), 1)
+
+  switcherRef.value.style.setProperty("--device-scroll", progress.toFixed(3))
+}
 
 function setActive(index) {
   activeIndex.value = index
@@ -35,10 +47,17 @@ function restartTimer() {
   timer = window.setInterval(nextSlide, 4200)
 }
 
-onMounted(restartTimer)
+onMounted(() => {
+  restartTimer()
+  updateDeviceProgress()
+  window.addEventListener("scroll", updateDeviceProgress, { passive: true })
+  window.addEventListener("resize", updateDeviceProgress)
+})
 
 onBeforeUnmount(() => {
   window.clearInterval(timer)
+  window.removeEventListener("scroll", updateDeviceProgress)
+  window.removeEventListener("resize", updateDeviceProgress)
 })
 </script>
 
@@ -49,7 +68,7 @@ onBeforeUnmount(() => {
       <h2>现场、后台和客户视图实时同步</h2>
     </div>
 
-    <div class="device-switcher" :class="`is-${activeSlide.key}`">
+    <div ref="switcherRef" class="device-switcher" :class="`is-${activeSlide.key}`">
       <div
         v-for="slide in slides"
         :key="slide.key"

@@ -517,9 +517,10 @@ h3 {
 }
 
 .device-switcher {
+  --device-scroll: 0;
   position: relative;
   width: min(1072px, calc(100% - 32px));
-  aspect-ratio: 2.08 / 1;
+  height: 700px;
   overflow: hidden;
   border-radius: 22px;
   background: #ece6dc;
@@ -550,6 +551,12 @@ h3 {
   position: absolute;
   inset: 0;
   overflow: hidden;
+  transform: scale(calc(1.14 - (var(--device-scroll) * 0.12)));
+  transform-origin: 50% 50%;
+  transition-property: transform;
+  transition-duration: 120ms;
+  transition-timing-function: linear;
+  will-change: transform;
 }
 
 .mobile-photo {
@@ -565,10 +572,10 @@ h3 {
 }
 
 .desk-pad {
-  right: 9%;
-  top: 14%;
-  width: 310px;
-  height: 190px;
+  right: 8%;
+  top: 10%;
+  width: 360px;
+  height: 220px;
   background:
     repeating-linear-gradient(90deg, rgba(199, 70, 52, 0.78) 0 22px, rgba(234, 180, 164, 0.82) 22px 42px),
     #eadbd3;
@@ -578,9 +585,9 @@ h3 {
 
 .desk-book {
   left: 3%;
-  bottom: 5%;
-  width: 260px;
-  height: 210px;
+  bottom: -10%;
+  width: 330px;
+  height: 270px;
   background:
     linear-gradient(135deg, transparent 0 45%, rgba(29, 36, 49, 0.92) 46% 54%, transparent 55%),
     linear-gradient(90deg, #f2eadb, #d8cab6);
@@ -590,9 +597,9 @@ h3 {
 .hand-shape {
   position: absolute;
   right: 10%;
-  bottom: -22%;
-  width: 390px;
-  height: 270px;
+  bottom: -34%;
+  width: 500px;
+  height: 360px;
   border-radius: 50% 38% 0 0;
   background: linear-gradient(135deg, #8d3f33, #4a211d);
   transform: rotate(12deg);
@@ -602,9 +609,9 @@ h3 {
 .phone-screen {
   position: absolute;
   left: 50%;
-  top: 18%;
-  width: 198px;
-  min-height: 365px;
+  top: 19%;
+  width: 250px;
+  min-height: 464px;
   padding: 24px 16px 18px;
   border: 9px solid #15120f;
   border-radius: 34px;
@@ -649,7 +656,7 @@ h3 {
 }
 
 .phone-actions b {
-  min-height: 54px;
+  min-height: 64px;
   display: grid;
   place-items: center;
   border-radius: 14px;
@@ -658,7 +665,7 @@ h3 {
 }
 
 .phone-task {
-  height: 48px;
+  height: 58px;
   margin-top: 10px;
   border-radius: 14px;
   background: #f2eee8;
@@ -684,11 +691,11 @@ h3 {
 .laptop-screen {
   position: absolute;
   left: 50%;
-  top: 14%;
+  top: 12%;
   display: grid;
   grid-template-columns: 180px minmax(0, 1fr);
   width: min(78%, 760px);
-  height: 66%;
+  height: 70%;
   overflow: hidden;
   border: 12px solid #1a1713;
   border-radius: 24px 24px 14px 14px;
@@ -761,7 +768,7 @@ h3 {
 .laptop-base {
   position: absolute;
   left: 50%;
-  bottom: 12%;
+  bottom: 9%;
   width: min(72%, 720px);
   height: 28px;
   border-radius: 0 0 40px 40px;
@@ -797,7 +804,7 @@ h3 {
 .device-tabs {
   position: absolute;
   left: 50%;
-  bottom: 32px;
+  bottom: 30px;
   z-index: 3;
   display: flex;
   gap: 8px;
@@ -1028,6 +1035,292 @@ h3 {
   color: var(--muted);
   font-style: normal;
   font-weight: 800;
+}
+
+.work-order-visual,
+.report-visual,
+.feature-visual {
+  min-height: 696px;
+  padding: 40px;
+  border-radius: 22px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 250, 244, 0.1)),
+    url("./assets/bg.avif");
+  background-size: cover;
+  background-position: center;
+  box-shadow: none;
+}
+
+.report-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.feature-product-card {
+  position: relative;
+  width: min(100%, 508px);
+  min-height: 614px;
+  overflow: hidden;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow:
+    0 0 0 1px rgba(24, 20, 17, 0.06),
+    0 24px 70px rgba(38, 48, 60, 0.12);
+}
+
+.project-product-card,
+.budget-product-card {
+  padding: 24px;
+}
+
+.feature-product-card h3 {
+  margin: 0 0 22px;
+  font-size: 20px;
+}
+
+.project-toolbar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 96px;
+  gap: 14px;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.project-toolbar span,
+.project-toolbar b {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  border: 1px solid rgba(24, 20, 17, 0.1);
+  border-radius: 999px;
+  color: var(--muted);
+  background: #fffdf9;
+  font-size: 14px;
+}
+
+.project-toolbar span {
+  padding: 0 18px;
+}
+
+.project-toolbar b {
+  justify-content: center;
+  color: var(--ink);
+}
+
+.project-group-head,
+.project-group-foot {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 52px;
+  margin: 0 -24px;
+  padding: 0 24px;
+  background: #eef2f6;
+}
+
+.project-group-foot {
+  margin-top: 0;
+  background: #e9f5ef;
+}
+
+.project-group-head em,
+.project-group-foot em {
+  display: inline-grid;
+  place-items: center;
+  min-width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--muted);
+  font-style: normal;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.project-table-head,
+.project-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) 82px 72px 88px;
+  align-items: center;
+  gap: 14px;
+  min-height: 52px;
+  border-bottom: 1px solid rgba(24, 20, 17, 0.08);
+}
+
+.project-table-head {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.project-row {
+  position: relative;
+  font-size: 14px;
+  font-weight: 750;
+}
+
+.project-row::before {
+  content: "";
+  position: absolute;
+  left: -24px;
+  width: 4px;
+  height: 28px;
+  border-radius: 999px;
+  background: #f4b23a;
+}
+
+.project-row b {
+  justify-self: start;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+}
+
+.project-row.high b {
+  color: #287947;
+  background: #e4f3e8;
+}
+
+.project-row.mid b {
+  color: #a06313;
+  background: #fff0d7;
+}
+
+.project-row.low b {
+  color: #b63d3a;
+  background: #fbe6e4;
+}
+
+.project-row i,
+.project-row em {
+  display: block;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #56b4f2, #d95f80);
+}
+
+.project-row em {
+  width: 44px;
+  background:
+    radial-gradient(circle at 16px 50%, #9f7a5d 0 11px, transparent 12px),
+    radial-gradient(circle at 28px 50%, #34251e 0 11px, transparent 12px);
+}
+
+.budget-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 26px 34px;
+  padding: 24px 0 30px;
+  border-top: 1px solid rgba(24, 20, 17, 0.1);
+  border-bottom: 1px solid rgba(24, 20, 17, 0.1);
+}
+
+.budget-grid article {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+}
+
+.budget-grid article::before {
+  content: "";
+  grid-row: span 2;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle, transparent 0 37%, #15120f 38% 44%, transparent 45%),
+    #f0ede8;
+}
+
+.budget-grid span {
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.budget-grid strong {
+  font-size: 30px;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.analytics-head {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin: 26px 0 12px;
+}
+
+.analytics-head strong {
+  margin-right: auto;
+  font-size: 18px;
+}
+
+.analytics-head span {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.analytics-chart {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+  border-radius: 16px;
+  background:
+    linear-gradient(180deg, transparent 0 32%, rgba(92, 151, 224, 0.16) 33% 100%),
+    repeating-linear-gradient(to top, transparent 0 41px, rgba(24, 20, 17, 0.06) 42px);
+}
+
+.analytics-chart i {
+  position: absolute;
+  left: 50%;
+  top: 20px;
+  bottom: 0;
+  width: 2px;
+  background: #15120f;
+}
+
+.analytics-chart svg {
+  position: absolute;
+  inset: 28px 22px 18px;
+  width: calc(100% - 44px);
+  height: calc(100% - 46px);
+  overflow: visible;
+}
+
+.chart-line {
+  fill: none;
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.chart-line.solid {
+  stroke: #3a9a45;
+}
+
+.chart-line.dashed {
+  stroke: #3a9a45;
+  stroke-dasharray: 8 9;
+}
+
+.split-copy .chip-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 16px;
+  max-width: 420px;
+  margin-top: 86px;
+}
+
+.split-copy .chip-row span {
+  justify-content: center;
+  min-height: 48px;
+  background: rgba(255, 255, 255, 0.72);
+  font-size: 15px;
 }
 
 .benefit-section {
@@ -1597,6 +1890,7 @@ h3 {
 
   .device-switcher {
     width: min(100% - 24px, 560px);
+    height: auto;
     aspect-ratio: 0.76 / 1;
     border-radius: 22px;
   }
