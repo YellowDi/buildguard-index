@@ -1,7 +1,6 @@
 <script setup>
 import { onBeforeUnmount, onMounted } from "vue"
 import BenefitSection from "./components/BenefitSection.vue"
-import CtaSection from "./components/CtaSection.vue"
 import DashboardMockup from "./components/DashboardMockup.vue"
 import DeviceSection from "./components/DeviceSection.vue"
 import FeatureSection from "./components/FeatureSection.vue"
@@ -111,7 +110,6 @@ onBeforeUnmount(() => {
     </FeatureSection>
 
     <BenefitSection />
-    <CtaSection />
   </main>
 
   <SiteFooter />
