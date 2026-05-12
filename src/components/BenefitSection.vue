@@ -1,5 +1,17 @@
 <script setup>
-const integrationItems = ["巡检", "定位", "照片", "企微", "短信", "报告", "权限", "导出", "审计", "归档"]
+const integrationLogos = [
+  { label: "企", tone: "green" },
+  { label: "短", tone: "yellow" },
+  { label: "微", tone: "blue" },
+  { label: "表", tone: "orange" },
+  { label: "档", tone: "ink" },
+  { label: "权", tone: "purple" },
+  { label: "审", tone: "red" },
+  { label: "图", tone: "cyan" },
+  { label: "云", tone: "lime" },
+]
+
+const tickerLogos = [...integrationLogos, ...integrationLogos]
 
 const supportItems = [
   {
@@ -29,30 +41,18 @@ const supportItems = [
 
     <div class="benefit-showcase">
       <article class="benefit-card customization-card">
+        <h3>围绕你的业务流程灵活配置</h3>
         <div class="customization-visual" aria-hidden="true">
-          <div class="custom-window">
-            <div class="custom-sidebar">
+          <div class="placeholder-panel">
+            <div class="placeholder-swatches">
+              <span></span>
+              <span></span>
               <span></span>
               <span></span>
               <span></span>
               <span></span>
             </div>
-            <div class="custom-main">
-              <div class="custom-topbar"></div>
-              <div class="custom-preview-grid">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
-              <div class="custom-table">
-                <i></i>
-                <i></i>
-                <i></i>
-              </div>
-            </div>
-            <div class="custom-settings">
-              <b></b>
+            <div class="placeholder-controls">
               <span></span>
               <span></span>
               <span></span>
@@ -60,7 +60,7 @@ const supportItems = [
           </div>
         </div>
         <p>
-          客户、建筑、服务、计划、工单和报告彼此关联，团队不需要在多个表格之间来回切换。
+          <strong>定制每个细节</strong>，从客户、建筑、服务、计划、工单到报告字段，都能贴合团队已有的检测交付方式。
         </p>
       </article>
 
@@ -68,11 +68,17 @@ const supportItems = [
         <h3>连接现场与管理端</h3>
         <div class="integration-marquee" aria-hidden="true">
           <div class="integration-track">
-            <span v-for="(item, index) in integrationItems" :key="`${item}-${index}`">{{ item }}</span>
-            <span v-for="(item, index) in integrationItems" :key="`${item}-copy-${index}`">{{ item }}</span>
+            <span
+              v-for="(logo, index) in tickerLogos"
+              :key="`${logo.label}-${index}`"
+              class="placeholder-logo"
+              :class="`tone-${logo.tone}`"
+            >
+              {{ logo.label }}
+            </span>
           </div>
         </div>
-        <p>现场采集和后台调度保持同步，减少口头转述和重复录入。</p>
+        <p><strong>无缝协作</strong>，把现场采集、消息通知、报告归档与后台调度接在一起，减少口头转述和重复录入。</p>
       </article>
 
       <div class="benefit-support-grid">
