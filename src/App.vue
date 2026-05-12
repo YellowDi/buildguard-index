@@ -203,6 +203,7 @@ onBeforeUnmount(() => {
                 />
                 <img class="mock-phone-shape" :src="phoneShapeUrl" alt="" aria-hidden="true" />
               </div>
+              <img class="phone-hand-fingers" :src="phoneHandUrl" alt="" aria-hidden="true" />
               <span class="hero-badge badge-new"><span>New!</span></span>
               <span class="hero-badge badge-left">真实 App 截图</span>
               <span class="hero-badge badge-right">风险清晰呈现</span>
