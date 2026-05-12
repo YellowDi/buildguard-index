@@ -614,11 +614,18 @@ p {
   will-change: transform;
 }
 
+.hero-badge::before {
+  content: none;
+}
+
 .badge-left {
   left: -93px;
   top: 235px;
+  justify-content: center;
+  min-width: 188px;
   padding: 12px 28px;
   border-radius: 28px 28px 0 28px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transform: rotate(-11deg);
   animation: badgeFloatLeft 5.8s ease-in-out infinite;
 }
@@ -631,28 +638,36 @@ p {
   min-height: auto;
   padding: 17px 26px;
   border-radius: 28px 28px 28px 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transform: translateY(-50%) rotate(15.02deg);
   animation: badgeFloatRight 6.4s ease-in-out 620ms infinite;
 }
 
 .badge-new {
   z-index: 8;
-  left: 56px;
-  top: 78px;
+  left: 29px;
+  top: 82px;
   justify-content: center;
-  width: 72px;
-  height: 72px;
-  min-height: 72px;
+  width: 75px;
+  height: 75px;
+  min-height: 75px;
   padding: 0;
-  border-radius: 999px;
+  border-radius: 40px 40px 0 40px;
   color: #fff;
-  background: #0865ff;
+  background:
+    radial-gradient(circle at center, #0101db 0 39%, transparent 40%),
+    #fff;
   font-size: 16px;
+  overflow: hidden;
   box-shadow:
-    0 0 0 6px #fff,
+    0 4px 10px rgba(0, 0, 0, 0.1),
     0 18px 44px rgba(14, 33, 75, 0.18);
-  transform: rotate(-9deg);
+  transform: rotate(-14.77deg);
   animation: badgeFloatNew 5.2s ease-in-out 260ms infinite;
+}
+
+.badge-new::before {
+  content: none;
 }
 
 .hero-actions {
@@ -1692,13 +1707,13 @@ p {
 @keyframes badgeFloatNew {
   0%,
   100% {
-    transform: translate3d(0, 0, 0) rotate(-9deg);
+    transform: translate3d(0, 0, 0) rotate(-14.77deg);
   }
   45% {
-    transform: translate3d(10px, -13px, 0) rotate(-5deg);
+    transform: translate3d(9px, -12px, 0) rotate(-11deg);
   }
   72% {
-    transform: translate3d(-4px, -7px, 0) rotate(-12deg);
+    transform: translate3d(-4px, -7px, 0) rotate(-17deg);
   }
 }
 
