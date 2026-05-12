@@ -119,11 +119,6 @@ onBeforeUnmount(() => {
         </div>
       </div>
 
-      <div class="device-caption">
-        <strong>{{ activeSlide.title }}</strong>
-        <span>{{ activeSlide.description }}</span>
-      </div>
-
       <div class="device-tabs" role="tablist" aria-label="多端展示切换">
         <button
           v-for="(slide, index) in slides"

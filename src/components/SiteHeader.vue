@@ -1,8 +1,8 @@
 <template>
   <header class="site-header">
-    <a class="brand" href="#top" aria-label="BuildGuard 首页">
+    <a class="brand" href="#top" aria-label="宝京云维首页">
       <span class="brand-mark"></span>
-      <span>BuildGuard</span>
+      <span>宝京云维</span>
     </a>
     <nav class="nav-links" aria-label="主导航">
       <a href="#features">功能</a>

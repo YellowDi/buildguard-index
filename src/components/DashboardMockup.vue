@@ -15,11 +15,11 @@ const rows = [
 </script>
 
 <template>
-  <div class="dashboard-shell" aria-label="BuildGuard 后台概览示意图">
+  <div class="dashboard-shell" aria-label="宝京云维后台概览示意图">
     <aside class="dash-sidebar">
       <div class="dash-logo">
         <span class="brand-mark small"></span>
-        <strong>BuildGuard</strong>
+        <strong>宝京云维</strong>
       </div>
       <span
         v-for="(item, index) in menuItems"

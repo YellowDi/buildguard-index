@@ -16,7 +16,7 @@
           <div class="footer-intro">
             <a class="brand footer-brand" href="#top">
               <span class="brand-mark"></span>
-              <span>BuildGuard</span>
+              <span>宝京云维</span>
             </a>
             <p>建筑安全检测、巡检记录与运维管理平台。</p>
             <div class="footer-social" aria-label="社交链接">
@@ -42,7 +42,7 @@
         </div>
 
         <div class="footer-bottom">
-          <p>© 2026 BuildGuard. All rights reserved.</p>
+          <p>© 2026 宝京云维. All rights reserved.</p>
           <a href="#top">回到顶部</a>
         </div>
       </div>

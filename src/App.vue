@@ -58,7 +58,7 @@ onBeforeUnmount(() => {
         <p class="eyebrow hero-enter enter-1">建筑安全检测与运维管理平台</p>
         <h1 class="hero-enter enter-2">让建筑安全检测像专业团队一样运转</h1>
         <p class="hero-lead hero-enter enter-3">
-          BuildGuard 将检测服务、巡检工单、现场记录、风险分级和报告管理放在同一套流程里，
+          宝京云维将检测服务、巡检工单、现场记录、风险分级和报告管理放在同一套流程里，
           帮助团队减少沟通成本，稳定交付每一次建筑安全检测。
         </p>
         <div class="hero-actions hero-enter enter-4">
@@ -92,7 +92,7 @@ onBeforeUnmount(() => {
       visual="work-order"
       :chips="workOrderChips"
     >
-      从服务配置、计划排期到现场执行，BuildGuard 用清晰的工单流承接每个环节。
+      从服务配置、计划排期到现场执行，宝京云维用清晰的工单流承接每个环节。
       负责人、截止时间、风险等级和处理状态都能被及时看见。
     </FeatureSection>
 
