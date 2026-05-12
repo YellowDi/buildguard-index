@@ -611,6 +611,7 @@ p {
   font-size: 13px;
   font-weight: 900;
   box-shadow: 0 18px 44px rgba(14, 33, 75, 0.18);
+  will-change: transform;
 }
 
 .badge-left {
@@ -619,6 +620,7 @@ p {
   padding: 12px 28px;
   border-radius: 28px 28px 0 28px;
   transform: rotate(-11deg);
+  animation: badgeFloatLeft 5.8s ease-in-out infinite;
 }
 
 .badge-right {
@@ -630,6 +632,7 @@ p {
   padding: 17px 26px;
   border-radius: 28px 28px 28px 0;
   transform: translateY(-50%) rotate(15.02deg);
+  animation: badgeFloatRight 6.4s ease-in-out 620ms infinite;
 }
 
 .badge-new {
@@ -649,6 +652,7 @@ p {
     0 0 0 6px #fff,
     0 18px 44px rgba(14, 33, 75, 0.18);
   transform: rotate(-9deg);
+  animation: badgeFloatNew 5.2s ease-in-out 260ms infinite;
 }
 
 .hero-actions {
@@ -1685,6 +1689,45 @@ p {
   }
 }
 
+@keyframes badgeFloatNew {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-9deg);
+  }
+  45% {
+    transform: translate3d(10px, -13px, 0) rotate(-5deg);
+  }
+  72% {
+    transform: translate3d(-4px, -7px, 0) rotate(-12deg);
+  }
+}
+
+@keyframes badgeFloatLeft {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-11deg);
+  }
+  48% {
+    transform: translate3d(13px, -10px, 0) rotate(-8deg);
+  }
+  76% {
+    transform: translate3d(4px, 8px, 0) rotate(-13deg);
+  }
+}
+
+@keyframes badgeFloatRight {
+  0%,
+  100% {
+    transform: translate3d(0, -50%, 0) rotate(15.02deg);
+  }
+  42% {
+    transform: translate3d(-11px, calc(-50% - 12px), 0) rotate(18deg);
+  }
+  74% {
+    transform: translate3d(5px, calc(-50% + 8px), 0) rotate(13deg);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -1692,7 +1735,8 @@ p {
 
   .hero-enter,
   .reveal-on-scroll,
-  .client-track {
+  .client-track,
+  .hero-badge {
     animation: none;
     transition-duration: 0ms;
   }
