@@ -2,9 +2,9 @@
 import { onBeforeUnmount, onMounted } from "vue"
 import SiteFooter from "./components/SiteFooter.vue"
 import SiteHeader from "./components/SiteHeader.vue"
-import appRiskUrl from "../建筑物详情「存在风险」@2x.png"
-import appHomeUrl from "../首页「正常」@2x.png"
-import phoneHandUrl from "./assets/phone-hand.png"
+import appRiskUrl from "./assets/screenshot-building-detail-risk@2x.png"
+import appHomeUrl from "./assets/screenshot-home-normal@2x.png"
+import phoneHandUrl from "./assets/phone-hand-v2-tone.png"
 import phoneShapeUrl from "./assets/phone-shape.svg"
 
 const heroAvatars = ["管", "业", "维"]
