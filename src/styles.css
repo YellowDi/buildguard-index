@@ -236,7 +236,7 @@ p {
 .hero-lower {
   position: relative;
   display: grid;
-  grid-template-columns: 260px minmax(0, 1fr) 330px;
+  grid-template-columns: minmax(0, 380px) minmax(0, 1fr) 330px;
   gap: 34px;
   align-items: start;
   margin-top: -120px;
@@ -349,6 +349,20 @@ p {
   object-fit: cover;
   transform: none;
   pointer-events: none;
+  -webkit-mask-image: linear-gradient(
+    180deg,
+    #000 0%,
+    #000 64%,
+    rgba(0, 0, 0, 0.72) 76%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  mask-image: linear-gradient(
+    180deg,
+    #000 0%,
+    #000 64%,
+    rgba(0, 0, 0, 0.72) 76%,
+    rgba(0, 0, 0, 0) 100%
+  );
 }
 
 .phone-hand-fingers {
@@ -360,6 +374,20 @@ p {
   object-fit: cover;
   pointer-events: none;
   clip-path: inset(23.8% 83.6% 27.6% 0);
+  -webkit-mask-image: linear-gradient(
+    180deg,
+    #000 0%,
+    #000 64%,
+    rgba(0, 0, 0, 0.72) 76%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  mask-image: linear-gradient(
+    180deg,
+    #000 0%,
+    #000 64%,
+    rgba(0, 0, 0, 0.72) 76%,
+    rgba(0, 0, 0, 0) 100%
+  );
 }
 
 .app-phone {
@@ -744,13 +772,54 @@ p {
   transition-timing-function: cubic-bezier(0.2, 0, 0, 1);
 }
 
-.store-button span {
-  font-size: 13px;
+.store-button__icon {
+  flex-shrink: 0;
+  font-size: 20px;
+  line-height: 1;
 }
 
 .store-button.android {
   color: #fff;
   background: #050505;
+}
+
+/* Hero 下载按钮：默认白底深色；悬浮反相为黑底白字（参考图左→右） */
+.hero-actions .store-button,
+.hero-actions .store-button.android {
+  min-height: 52px;
+  padding: 0 24px;
+  gap: 10px;
+  color: var(--ink);
+  background: #fff;
+  font-weight: 700;
+  box-shadow: 0 10px 28px rgba(0, 24, 72, 0.12);
+  transition-property: background-color, color, box-shadow, transform;
+  transition-duration: 200ms;
+  transition-timing-function: cubic-bezier(0.2, 0, 0, 1);
+}
+
+.hero-actions .store-button:hover {
+  color: #fff;
+  background: #050505;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.22);
+}
+
+.hero-actions .store-button:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.95);
+  outline-offset: 3px;
+}
+
+.hero-actions .store-button:active {
+  transform: scale(0.98);
+}
+
+.hero-actions .store-button:hover:active {
+  background: #161616;
+}
+
+.hero-actions .store-button__icon {
+  font-size: 22px;
+  color: currentColor;
 }
 
 .store-button.dark,
@@ -1821,6 +1890,10 @@ p {
   .hero-phone-stage {
     transform: none;
   }
+
+  .hero-actions .store-button {
+    transition-duration: 0ms;
+  }
 }
 
 @media (max-width: 1120px) {
@@ -1858,7 +1931,8 @@ p {
   .hero-phone-stage {
     grid-column: 1 / -1;
     grid-row: 1;
-    height: 760px;
+    height: 1030px;
+    transform: translateY(340px);
   }
 
   .hero-hand-mock {
@@ -1921,7 +1995,7 @@ p {
   .hero-actions {
     grid-column: 2;
     grid-row: 1;
-    padding-top: 0;
+    padding-top: 205px;
   }
 
   .stats-section,
@@ -2014,11 +2088,18 @@ p {
   }
 
   .hero-section {
-    min-height: 1280px;
+    min-height: 1148px;
   }
 
   .hero-section::after {
-    height: 360px;
+    left: 20px;
+    right: auto;
+    bottom: -5px;
+    width: 104%;
+    height: 117px;
+    background: #fff;
+    filter: blur(20px);
+    transform: none;
   }
 
   .hero-grid {
@@ -2077,6 +2158,7 @@ p {
     width: 100%;
     height: 520px;
     margin: 26px auto 0;
+    transform: none;
   }
 
   .phone-hand {
@@ -2158,6 +2240,7 @@ p {
     order: 2;
     grid-column: 1;
     grid-row: auto;
+    padding-top: 0;
     text-align: center;
   }
 
@@ -2177,9 +2260,14 @@ p {
 
   .stats-section {
     gap: 24px;
-    width: min(100% - 40px, 1200px);
+    width: min(100% - 64px, 1200px);
     padding-bottom: 30px;
-    text-align: center;
+    text-align: left;
+  }
+
+  .stats-intro {
+    align-items: flex-start;
+    text-align: left;
   }
 
   .stats-intro p {
@@ -2188,14 +2276,18 @@ p {
   }
 
   .stats-grid {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 24px;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 48px;
     width: 100%;
   }
 
   .stats-grid article {
-    align-items: center;
+    align-items: flex-start;
+  }
+
+  .stats-grid strong {
+    font-size: 40px;
   }
 
   .analytics-section {

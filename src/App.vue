@@ -214,11 +214,11 @@ onBeforeUnmount(() => {
             <p>帮助业主、物业和资产方清晰了解建筑安全状态。</p>
             <div>
               <a class="store-button" href="#cta" aria-label="获取 iOS 客户 App">
-                <span>●</span>
+                <i class="ri-apple-fill store-button__icon" aria-hidden="true"></i>
                 <strong>iOS 客户端</strong>
               </a>
               <a class="store-button android" href="#cta" aria-label="获取 Android 客户 App">
-                <span>◆</span>
+                <i class="ri-android-fill store-button__icon" aria-hidden="true"></i>
                 <strong>Android</strong>
               </a>
             </div>
