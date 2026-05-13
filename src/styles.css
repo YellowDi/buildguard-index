@@ -1385,33 +1385,6 @@ p {
     #f3ebff;
 }
 
-.feature-cta {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: max-content;
-  min-height: 55px;
-  margin: 40px auto 0;
-  padding: 14px 24px;
-  border-radius: 999px;
-  color: #fff;
-  background: linear-gradient(180deg, #474747 0%, #131313 100%);
-  font-size: 16px;
-  line-height: 1.7;
-  font-weight: 700;
-  transition-property: transform, background;
-  transition-duration: 180ms;
-  transition-timing-function: cubic-bezier(0.2, 0, 0, 1);
-}
-
-.feature-cta:hover {
-  background: linear-gradient(180deg, #3d3d3d 0%, #0a0a0a 100%);
-}
-
-.feature-cta:active {
-  transform: scale(0.96);
-}
-
 .steps-section {
   padding-top: 60px;
 }

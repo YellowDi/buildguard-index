@@ -275,7 +275,7 @@ onBeforeUnmount(() => {
 
     <section id="app-features" class="feature-section section-shell">
       <div class="section-heading reveal-on-scroll">
-        <h2>客户 App 的核心功能</h2>
+        <h2>核心功能</h2>
         <p>围绕客户最关心的建筑状态、风险证据、整改建议和历史服务记录组织信息。</p>
       </div>
       <div class="feature-card-grid" aria-label="客户 App 核心功能列表">
@@ -310,7 +310,6 @@ onBeforeUnmount(() => {
           </article>
         </div>
       </div>
-      <a class="feature-cta" href="#cta">查看客户 App</a>
     </section>
 
     <section id="workflow" class="steps-section section-shell reveal-on-scroll">
