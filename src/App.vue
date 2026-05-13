@@ -4,8 +4,14 @@ import SiteFooter from "./components/SiteFooter.vue"
 import SiteHeader from "./components/SiteHeader.vue"
 import appRiskUrl from "./assets/screenshot-building-detail-risk@2x.png"
 import appHomeUrl from "./assets/screenshot-home-normal@2x.png"
-import phoneHandUrl from "./assets/phone-hand-v2-tone.png"
+import phoneHandFingersUrl from "./assets/phone-hand-2-fingers.png"
+import phoneHandUrl from "./assets/phone-hand-2.png"
 import phoneShapeUrl from "./assets/phone-shape.svg"
+import upwizeCloudUrl from "./assets/upwize-cloud.svg"
+import upwizeIconInsightsUrl from "./assets/upwize-icon-insights.svg"
+import upwizeIconTrendsUrl from "./assets/upwize-icon-trends.svg"
+import upwizePhoneShapeUrl from "./assets/upwize-phone-shape.png"
+import upwizeShapeUrl from "./assets/upwize-shape.svg"
 
 const heroAvatars = ["管", "业", "维"]
 
@@ -203,7 +209,7 @@ onBeforeUnmount(() => {
                 />
                 <img class="mock-phone-shape" :src="phoneShapeUrl" alt="" aria-hidden="true" />
               </div>
-              <img class="phone-hand-fingers" :src="phoneHandUrl" alt="" aria-hidden="true" />
+              <img class="phone-hand-fingers" :src="phoneHandFingersUrl" alt="" aria-hidden="true" />
               <span class="hero-badge badge-new"><span>New!</span></span>
               <span class="hero-badge badge-left">真实 App 截图</span>
               <span class="hero-badge badge-right">风险清晰呈现</span>
@@ -242,17 +248,23 @@ onBeforeUnmount(() => {
 
     <section id="features" class="analytics-section section-shell reveal-on-scroll">
       <div class="analytics-visual">
-        <div class="soft-cloud" aria-hidden="true"></div>
-        <figure class="app-shot analytics-shot">
-          <img :src="appRiskUrl" alt="宝京云维客户 App 风险详情页" />
+        <img class="analytics-cloud" :src="upwizeCloudUrl" alt="" aria-hidden="true" />
+        <img class="analytics-shape" :src="upwizeShapeUrl" alt="" aria-hidden="true" />
+        <figure class="analytics-shot">
+          <img class="analytics-screen" :src="appRiskUrl" alt="宝京云维客户 App 风险详情页" />
+          <img class="analytics-phone-shape" :src="upwizePhoneShapeUrl" alt="" aria-hidden="true" />
         </figure>
       </div>
       <div class="analytics-copy">
-        <h2>关键风险，让客户放心跟进</h2>
+        <h2>关键风险，让客户<br />放心跟进</h2>
         <p>客户随时查看安全评分、风险数量、问题位置、现场照片和整改建议，不再依赖零散沟通。</p>
         <div class="analytics-items">
-          <article v-for="item in analyticsItems" :key="item.title">
-            <span></span>
+          <article v-for="(item, index) in analyticsItems" :key="item.title">
+            <span>
+              <b>
+                <img :src="index === 0 ? upwizeIconTrendsUrl : upwizeIconInsightsUrl" alt="" aria-hidden="true" />
+              </b>
+            </span>
             <strong>{{ item.title }}</strong>
             <p>{{ item.text }}</p>
           </article>

@@ -27,9 +27,11 @@ body {
   margin: 0;
   color: var(--ink);
   background: #fff;
-  font-family: "Plus Jakarta Sans", Inter, "Noto Sans SC", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
   letter-spacing: 0;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 a {
@@ -373,21 +375,7 @@ p {
   height: 100%;
   object-fit: cover;
   pointer-events: none;
-  clip-path: inset(23.8% 83.6% 27.6% 0);
-  -webkit-mask-image: linear-gradient(
-    180deg,
-    #000 0%,
-    #000 64%,
-    rgba(0, 0, 0, 0.72) 76%,
-    rgba(0, 0, 0, 0) 100%
-  );
-  mask-image: linear-gradient(
-    180deg,
-    #000 0%,
-    #000 64%,
-    rgba(0, 0, 0, 0.72) 76%,
-    rgba(0, 0, 0, 0) 100%
-  );
+  clip-path: inset(18% 76% 24% 0);
 }
 
 .app-phone {
@@ -459,6 +447,8 @@ p {
   height: 100%;
   object-fit: cover;
   pointer-events: none;
+  transform: scaleX(-1);
+  transform-origin: center;
 }
 
 .phone-notch {
@@ -916,47 +906,90 @@ p {
 }
 
 .analytics-section {
-  display: grid;
-  grid-template-columns: minmax(0, 0.95fr) minmax(360px, 0.85fr);
-  gap: 84px;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
+  gap: 20px;
+  width: min(100% - 60px, 1200px);
+  max-width: 1200px;
+  padding: 86px 0 80px;
 }
 
 .analytics-visual {
   position: relative;
-  min-height: 700px;
+  display: flex;
+  flex: none;
+  justify-content: center;
+  align-items: flex-end;
+  width: 50%;
+  aspect-ratio: 0.746269;
   overflow: hidden;
-  border-radius: 30px;
-  background:
-    linear-gradient(rgba(255, 255, 255, 0.26) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.26) 1px, transparent 1px),
-    linear-gradient(180deg, #c6d8ff 0%, #f9fbff 100%);
-  background-size: 118px 118px, 118px 118px, auto;
+  border-radius: 32px;
+  background: linear-gradient(180deg, #0865ff 0%, #e0e4f9 81.5315%, #f8f8f8 100%);
+  box-shadow: none;
 }
 
-.soft-cloud {
+.analytics-cloud {
   position: absolute;
-  left: -120px;
-  top: 52px;
-  width: 280px;
-  height: 140px;
-  border-radius: 999px;
-  background:
-    radial-gradient(circle at 28% 56%, #fff 0 34%, transparent 35%),
-    radial-gradient(circle at 58% 42%, #fff 0 40%, transparent 41%),
-    radial-gradient(circle at 76% 60%, #fff 0 24%, transparent 25%);
-  filter: blur(2px);
-  opacity: 0.88;
+  z-index: 1;
+  left: -54px;
+  bottom: 36px;
+  width: 138%;
+  aspect-ratio: 1;
+  max-width: none;
+  opacity: 1;
+  pointer-events: none;
+  user-select: none;
+  animation: cloudPan 12s ease-in-out infinite alternate;
+}
+
+.analytics-shape {
+  position: absolute;
+  left: 50%;
+  top: -95px;
+  z-index: 2;
+  width: 121%;
+  aspect-ratio: 1.46076;
+  max-width: none;
+  object-fit: cover;
+  transform: translateX(-50%);
+  pointer-events: none;
+  user-select: none;
 }
 
 .analytics-shot {
+  position: relative;
+  z-index: 7;
+  flex: none;
+  width: 67%;
+  aspect-ratio: 0.645265;
+  margin: 0;
+  overflow: visible;
+  background: transparent;
+  box-shadow: none;
+}
+
+.analytics-screen {
   position: absolute;
-  left: 50%;
-  top: 30px;
-  width: 302px;
-  border-color: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 26px 74px rgba(31, 67, 124, 0.2);
-  transform: translateX(-50%) rotate(-2.5deg);
+  left: 4.4837%;
+  top: 1.63121%;
+  z-index: 1;
+  width: 91%;
+  height: 98%;
+  border-radius: 40px;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.analytics-phone-shape {
+  position: absolute;
+  left: -0.135872%;
+  top: 0.0709236%;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  pointer-events: none;
 }
 
 .analytics-phone {
@@ -1032,28 +1065,102 @@ p {
 
 .analytics-copy h2,
 .analytics-copy p {
-  color: #c0c3ca;
+  color: var(--ink);
+}
+
+.analytics-copy {
+  display: flex;
+  flex: none;
+  flex-flow: column;
+  align-items: flex-start;
+  gap: 78px;
+  width: 43%;
+  height: min-content;
+  overflow: visible;
 }
 
 .analytics-copy h2 {
-  max-width: 500px;
+  max-width: 425px;
+  margin: 0;
+  font-size: 46px;
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: -2.5px;
 }
 
 .analytics-copy > p {
-  max-width: 520px;
-  margin-bottom: 52px;
-  font-size: 15px;
-  line-height: 1.8;
+  max-width: 425px;
+  margin: -62px 0 0;
+  color: #666a73;
+  font-size: 16px;
+  line-height: 1.7;
+  font-weight: 400;
 }
 
 .analytics-items {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 42px;
-  margin-bottom: 34px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 99px;
+  width: 100%;
+  height: min-content;
+  margin: 0;
 }
 
-.analytics-items article span,
+.analytics-items article {
+  min-width: 0;
+}
+
+.analytics-items article span {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 75px;
+  height: 75px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  border-radius: 40px 40px 40px 0;
+  background: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.analytics-items article span b {
+  display: grid;
+  place-items: center;
+  width: 79%;
+  aspect-ratio: 1;
+  border-radius: 999px;
+  background: #0101db;
+}
+
+.analytics-items article:nth-child(2) span b {
+  background: #ff7442;
+}
+
+.analytics-items article span img {
+  display: block;
+  width: 24px;
+  height: 24px;
+  object-fit: cover;
+}
+
+.analytics-items strong {
+  display: block;
+  color: var(--ink);
+  font-size: 20px;
+  line-height: 1.7;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.analytics-items p {
+  margin: 0;
+  color: #666a73;
+  font-size: 16px;
+  line-height: 1.7;
+  font-weight: 400;
+}
+
 .why-column article span {
   display: grid;
   place-items: center;
@@ -1068,25 +1175,30 @@ p {
   box-shadow: 0 12px 28px rgba(87, 105, 170, 0.12);
 }
 
-.analytics-items article:nth-child(2) span {
-  background:
-    radial-gradient(circle at center, #fff 0 3px, transparent 4px),
-    linear-gradient(-45deg, transparent 42%, #fff 43% 57%, transparent 58%),
-    #ffd6ca;
+.analytics-copy .muted-button {
+  position: relative;
+  overflow: hidden;
+  justify-content: center;
+  width: max-content;
+  min-width: 0;
+  height: auto;
+  margin-top: -18px;
+  padding: 12px 24px;
+  border-radius: 999px;
+  color: #fff;
+  background: linear-gradient(180deg, rgb(71, 71, 71) 0%, rgb(19, 19, 19) 100%);
+  box-shadow: none;
+  font-size: 16px;
+  line-height: 1.7;
+  font-weight: 700;
 }
 
-.analytics-items strong {
-  display: block;
-  color: #b7bac1;
-  font-size: 18px;
-  margin-bottom: 12px;
+.analytics-copy .muted-button::before {
+  content: none;
 }
 
-.analytics-items p {
-  margin: 0;
-  color: #ced0d5;
-  font-size: 14px;
-  line-height: 1.65;
+.analytics-copy .muted-button:hover {
+  background: linear-gradient(180deg, rgb(61, 61, 61) 0%, rgb(10, 10, 10) 100%);
 }
 
 .section-heading {
@@ -1828,6 +1940,15 @@ p {
   }
 }
 
+@keyframes cloudPan {
+  from {
+    transform: translateX(-22px);
+  }
+  to {
+    transform: translateX(26px);
+  }
+}
+
 @keyframes badgeFloatNew {
   0%,
   100% {
@@ -1875,6 +1996,7 @@ p {
   .hero-enter,
   .reveal-on-scroll,
   .client-track,
+  .analytics-cloud,
   .hero-badge {
     animation: none;
     transition-duration: 0ms;
@@ -2234,6 +2356,10 @@ p {
     font-size: 10px;
   }
 
+  .hero-badge {
+    display: none;
+  }
+
   .hero-actions {
     position: relative;
     z-index: 6;
@@ -2291,17 +2417,51 @@ p {
   }
 
   .analytics-section {
+    flex-direction: column;
+    align-items: center;
     gap: 38px;
+    padding: 76px 0;
   }
 
   .analytics-visual {
-    min-height: 560px;
+    width: 100%;
+    max-width: 520px;
+    min-height: 0;
     border-radius: 24px;
   }
 
   .analytics-shot {
-    top: 28px;
-    width: 244px;
+    width: 67%;
+  }
+
+  .analytics-cloud {
+    left: -44px;
+    bottom: 28px;
+  }
+
+  .analytics-shape {
+    top: -64px;
+  }
+
+  .analytics-copy {
+    align-items: center;
+    gap: 40px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .analytics-copy h2,
+  .analytics-copy > p {
+    max-width: 520px;
+  }
+
+  .analytics-copy > p {
+    margin-top: -24px;
+  }
+
+  .analytics-items {
+    justify-content: center;
+    gap: 30px;
   }
 
   .analytics-items,
