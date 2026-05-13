@@ -1,22 +1,43 @@
+<script setup>
+import appHomeUrl from "../assets/screenshot-home-normal@2x.png"
+import phoneShapeUrl from "../assets/upwize-phone-shape.png"
+</script>
+
 <template>
   <footer id="cta" class="site-footer">
     <section class="footer-cta reveal-on-scroll">
-      <div class="footer-phone" aria-hidden="true">
-        <div class="app-phone">
-          <div class="phone-notch"></div>
-          <h3>客户 App</h3>
-          <div class="footer-progress"><span></span></div>
-          <div class="footer-checks"><i></i><i></i></div>
-        </div>
-      </div>
+      <div class="footer-cta-bg" aria-hidden="true"></div>
+      <div class="footer-cta-grid" aria-hidden="true"></div>
+
       <div class="footer-copy">
-        <h2>让客户下一次打开 App，就看清建筑安全状态</h2>
-        <p>把建筑检测报告、风险提醒、整改建议和历史评估做成更适合客户使用的移动端体验。</p>
+        <div class="footer-copy-stack">
+          <h2>让客户下一次打开 App，就看清建筑安全状态</h2>
+          <p>把建筑检测报告、风险提醒、整改建议和历史评估做成更适合客户使用的移动端体验。</p>
+        </div>
+
+        <div class="footer-check-list" aria-label="客户 App 核心能力">
+          <span><i class="ri-check-line" aria-hidden="true"></i>一眼看清安全评分</span>
+          <span><i class="ri-check-line" aria-hidden="true"></i>一键查看风险详情</span>
+        </div>
+
         <div class="footer-actions">
-          <a class="store-button dark" href="mailto:ops@buildguard.cn">预约演示</a>
-          <a class="store-button" href="mailto:ops@buildguard.cn">获取客户 App</a>
+          <a class="store-button footer-store-button" href="mailto:ops@buildguard.cn" aria-label="获取 iOS 客户 App">
+            <i class="ri-apple-fill store-button__icon" aria-hidden="true"></i>
+            <strong>获取 iOS 客户端</strong>
+          </a>
+          <a class="store-button footer-store-button" href="mailto:ops@buildguard.cn" aria-label="获取 Android 客户 App">
+            <i class="ri-google-play-fill store-button__icon" aria-hidden="true"></i>
+            <strong>获取 Android</strong>
+          </a>
         </div>
       </div>
+
+      <figure class="footer-phone" aria-label="宝京云维客户 App 建筑安全状态界面">
+        <div class="footer-phone-frame">
+          <img class="footer-phone-screen" :src="appHomeUrl" alt="宝京云维客户 App 建筑安全首页" />
+          <img class="footer-phone-shell" :src="phoneShapeUrl" alt="" aria-hidden="true" />
+        </div>
+      </figure>
     </section>
 
     <div class="footer-main reveal-on-scroll">
