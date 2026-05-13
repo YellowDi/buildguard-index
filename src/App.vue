@@ -1,5 +1,5 @@
 <script setup>
-import { onBeforeUnmount, onMounted } from "vue"
+import { onBeforeUnmount, onMounted, ref } from "vue"
 import SiteFooter from "./components/SiteFooter.vue"
 import SiteHeader from "./components/SiteHeader.vue"
 import appRiskUrl from "./assets/screenshot-building-detail-risk@2x.png"
@@ -13,6 +13,9 @@ import upwizeIconTrendsUrl from "./assets/upwize-icon-trends.svg"
 import upwizePhoneShapeUrl from "./assets/upwize-phone-shape.png"
 import upwizeShapeUrl from "./assets/upwize-shape.svg"
 import upwizeWhyGridUrl from "./assets/upwize-why-grid.svg"
+import avatarJamesUrl from "./assets/upwize-avatar-james.png"
+import avatarMichaelUrl from "./assets/upwize-avatar-michael.png"
+import avatarTopUrl from "./assets/upwize-avatar-top.png"
 
 const heroAvatars = ["管", "业", "维"]
 
@@ -117,23 +120,28 @@ const storyCards = [
   },
 ]
 
-const testimonials = [
-  {
-    quote: "过去业主总要在群里追问报告进度，现在他们打开 App 就能看到检测状态和预计交付时间。",
-    name: "陈经理",
-    role: "物业项目负责人",
-  },
+const testimonialItems = [
   {
     quote: "风险项展示比 PDF 更直观，照片、位置、整改建议都在一起，客户沟通效率明显提高。",
-    name: "周工",
-    role: "项目服务顾问",
+    name: "Michael Bennett",
+    role: "App Designer",
+    avatar: avatarMichaelUrl,
   },
   {
-    quote: "我们最看重历史档案。后续复查时，客户能快速回看上次问题和整改结果。",
-    name: "林女士",
-    role: "资产管理方",
+    quote: "使用宝京云维的数据分析后，我们更清楚项目风险趋势，也更有把握推动整改决策。",
+    name: "Top Clofen",
+    role: "product Designer",
+    avatar: avatarTopUrl,
+  },
+  {
+    quote: "过去业主总要在群里追问报告进度，现在他们打开 App 就能看到检测状态和预计交付时间。",
+    name: "James Thompson",
+    role: "product Designer",
+    avatar: avatarJamesUrl,
   },
 ]
+
+const testimonials = [...testimonialItems, ...testimonialItems, ...testimonialItems]
 
 const clientLogos = ["物业集团", "园区客户", "业委会", "商业楼宇", "资产管理", "城市更新", "企业客户"]
 const clientTicker = [...clientLogos, ...clientLogos]
@@ -158,10 +166,24 @@ const faqs = [
 ]
 
 let observer
+const testimonialTrack = ref(null)
 
 function updateHeroProgress() {
   const progress = Math.min(window.scrollY / 620, 1)
   document.documentElement.style.setProperty("--hero-scroll", progress.toFixed(3))
+}
+
+function scrollTestimonials(direction) {
+  const track = testimonialTrack.value
+  if (!track) return
+
+  const card = track.querySelector(".testimonial-card")
+  const distance = card ? card.getBoundingClientRect().width + 40 : track.clientWidth * 0.82
+
+  track.scrollBy({
+    left: distance * direction,
+    behavior: "smooth",
+  })
 }
 
 onMounted(() => {
@@ -438,19 +460,37 @@ onBeforeUnmount(() => {
       </article>
     </section>
 
-    <section id="testimonials" class="testimonial-section section-shell reveal-on-scroll">
-      <div class="section-heading center">
-        <h2>真实客户，真实反馈</h2>
-      </div>
-      <div class="testimonial-track">
-        <article v-for="item in testimonials" :key="item.name">
-          <p>“{{ item.quote }}”</p>
-          <div>
-            <span>{{ item.name.slice(0, 1) }}</span>
-            <strong>{{ item.name }}</strong>
-            <small>{{ item.role }}</small>
+    <section id="testimonials" class="testimonial-section reveal-on-scroll" aria-labelledby="testimonial-title">
+      <div class="testimonial-inner">
+        <div class="testimonial-heading">
+          <h2 id="testimonial-title">真实客户，真实反馈</h2>
+          <div class="testimonial-controls" aria-label="客户反馈切换">
+            <button type="button" aria-label="上一组反馈" @click="scrollTestimonials(-1)">
+              <i class="ri-arrow-left-line" aria-hidden="true"></i>
+            </button>
+            <button type="button" aria-label="下一组反馈" @click="scrollTestimonials(1)">
+              <i class="ri-arrow-right-line" aria-hidden="true"></i>
+            </button>
           </div>
-        </article>
+        </div>
+        <div class="testimonial-window">
+          <div ref="testimonialTrack" class="testimonial-track" tabindex="0" aria-label="客户反馈列表">
+            <article
+              v-for="(item, index) in testimonials"
+              :key="`${item.name}-${index}`"
+              class="testimonial-card"
+            >
+              <p>“{{ item.quote }}”</p>
+              <footer>
+                <img :src="item.avatar" :alt="`${item.name} 头像`" />
+                <div>
+                  <strong>{{ item.name }}</strong>
+                  <small>{{ item.role }}</small>
+                </div>
+              </footer>
+            </article>
+          </div>
+        </div>
       </div>
     </section>
 
