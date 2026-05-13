@@ -41,40 +41,59 @@ import phoneShapeUrl from "../assets/upwize-phone-shape.png"
     </section>
 
     <div class="footer-main reveal-on-scroll">
-      <div>
-        <a class="brand footer-brand" href="#top">
-          <span class="brand-mark"></span>
-          <span>宝京云维</span>
-        </a>
-        <p>客户 App 端建筑安全检测服务入口。</p>
-      </div>
-
-      <nav class="footer-links" aria-label="页脚导航">
-        <div>
+      <nav class="footer-top" aria-label="页脚导航">
+        <div class="footer-column">
           <strong>Quick links</strong>
           <a href="#top">首页</a>
           <a href="#features">功能</a>
           <a href="#workflow">流程</a>
           <a href="#testimonials">客户反馈</a>
-        </div>
-        <div>
-          <strong>Support</strong>
           <a href="#faq">常见问题</a>
-          <a href="mailto:ops@buildguard.cn">联系我们</a>
+        </div>
+
+        <div class="footer-column">
+          <strong>建筑安全服务</strong>
+          <a href="#app-features">客户 App</a>
+          <a href="#features">风险详情</a>
+          <a href="#workflow">整改跟进</a>
+          <a href="#faq">历史评估</a>
+          <a href="mailto:ops@buildguard.cn">在线报修</a>
+        </div>
+
+        <div class="footer-column">
+          <strong>Support & resources</strong>
+          <a href="mailto:ops@buildguard.cn">Help Center</a>
+          <a href="#workflow">How It Works</a>
           <a href="/privacy-policy.html">隐私政策</a>
           <a href="/user-agreement.html">用户协议</a>
+          <a href="mailto:ops@buildguard.cn">联系我们</a>
         </div>
-        <div>
+
+        <div class="footer-column footer-contact">
           <strong>Contact us</strong>
-          <a href="mailto:ops@buildguard.cn">ops@buildguard.cn</a>
-          <a href="tel:+8613800000000">+86 138 0000 0000</a>
+          <p>Address: 上海市建筑安全服务中心</p>
+          <p>Email: <a href="mailto:ops@buildguard.cn">ops@buildguard.cn</a></p>
+          <p>Phone: <a href="tel:+8613800000000">+86 138 0000 0000</a></p>
         </div>
       </nav>
-    </div>
 
-    <div class="footer-bottom">
-      <p>© 2026 宝京云维. All rights reserved.</p>
-      <a href="#top">回到顶部</a>
+      <a class="footer-wordmark" href="#top" aria-label="宝京云维首页">
+        <span class="footer-wordmark-mark" aria-hidden="true"></span>
+        <span>宝京云维</span>
+      </a>
+
+      <div class="footer-bottom">
+        <div class="footer-bottom-left">
+          <a href="mailto:ops@buildguard.cn">Support</a>
+          <a href="/privacy-policy.html">Privacy</a>
+          <a href="/user-agreement.html">Agreement</a>
+          <a href="#top">Back to top</a>
+        </div>
+        <div class="footer-bottom-right">
+          <a href="/user-agreement.html">Terms of use</a>
+          <span>宝京云维 © 2026</span>
+        </div>
+      </div>
     </div>
   </footer>
 </template>
