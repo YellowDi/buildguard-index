@@ -1385,10 +1385,6 @@ p {
     #f3ebff;
 }
 
-.steps-section {
-  padding-top: 60px;
-}
-
 .pill-label {
   display: inline-flex;
   align-items: center;
@@ -1401,38 +1397,128 @@ p {
   font-weight: 900;
 }
 
+.steps-section.section-shell {
+  width: 100%;
+  padding: 96px 0 24px;
+}
+
+.steps-section .section-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(100% - 60px, 1200px);
+  max-width: 1200px;
+  margin: 0 auto 80px;
+  text-align: center;
+}
+
+.steps-section .pill-label {
+  min-height: 31px;
+  padding: 0;
+  border-radius: 0;
+  color: var(--blue);
+  background: transparent;
+  font-size: 20px;
+  line-height: 1.5;
+  font-weight: 700;
+}
+
+.steps-section .section-heading h2 {
+  margin: 16px 0 0;
+  font-size: 56px;
+  line-height: 1.2;
+  font-weight: 800;
+}
+
+.steps-section .section-heading p {
+  width: min(100%, 534px);
+  margin: 16px auto 0;
+  color: #616161;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
 .steps-grid {
+  position: relative;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(3, 368px);
+  justify-content: center;
+  gap: 48px;
+  width: min(100% - 60px, 1200px);
+  min-height: 216px;
+  margin: 0 auto;
+}
+
+.steps-grid::before {
+  content: "";
+  position: absolute;
+  left: 13px;
+  right: 11px;
+  top: -58px;
+  height: 503px;
+  background-image:
+    linear-gradient(rgba(5, 5, 5, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(5, 5, 5, 0.055) 1px, transparent 1px);
+  background-size: 116px 56px;
+  opacity: 0.72;
+  pointer-events: none;
 }
 
 .steps-grid article {
-  min-height: 280px;
-  padding: 28px;
-  border-radius: 28px;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(255, 255, 255, 0.72)),
-    #f2f5fb;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 368px;
+  min-height: 216px;
+  padding: 0;
+  text-align: center;
 }
 
-.steps-grid span {
+.step-icon {
   display: grid;
   place-items: center;
-  width: 58px;
-  height: 58px;
-  margin-bottom: 82px;
-  border-radius: 999px;
+  width: 80px;
+  height: 80px;
+  margin-bottom: 32px;
+  border-radius: 20px;
   color: #fff;
-  background: #050505;
-  font-weight: 900;
-  font-variant-numeric: tabular-nums;
+  background: var(--blue);
+  box-shadow: 0 18px 34px rgba(8, 101, 255, 0.14);
+}
+
+.step-icon i {
+  font-size: 40px;
+  line-height: 1;
+}
+
+.step-icon.tone-deep-blue {
+  background: #0101db;
+}
+
+.step-icon.tone-red {
+  background: #e64240;
+  box-shadow: 0 18px 34px rgba(230, 66, 64, 0.14);
+}
+
+.step-icon.tone-blue {
+  background: var(--blue);
+}
+
+.steps-grid h3 {
+  margin: 0 0 16px;
+  font-size: 24px;
+  line-height: 1.4;
+  font-weight: 800;
 }
 
 .steps-grid p {
+  width: 100%;
   margin: 0;
-  color: var(--muted);
-  line-height: 1.7;
+  color: #616161;
+  font-size: 18px;
+  line-height: 1.5;
 }
 
 .why-section {
@@ -2258,6 +2344,16 @@ p {
     justify-items: center;
   }
 
+  .steps-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+    width: min(100% - 36px, 1200px);
+  }
+
+  .steps-grid article {
+    width: 100%;
+  }
+
   .why-column {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     width: 100%;
@@ -2478,6 +2574,31 @@ p {
     padding: 76px 0;
   }
 
+  .steps-section.section-shell {
+    width: 100%;
+    padding: 76px 0 16px;
+  }
+
+  .steps-section .section-heading {
+    width: min(100% - 24px, 1200px);
+    margin-bottom: 54px;
+  }
+
+  .steps-section .pill-label {
+    font-size: 16px;
+  }
+
+  .steps-section .section-heading h2 {
+    font-size: 38px;
+    line-height: 1.1;
+  }
+
+  .steps-section .section-heading p {
+    max-width: 360px;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
   .stats-section {
     gap: 24px;
     width: min(100% - 64px, 1200px);
@@ -2566,6 +2687,34 @@ p {
     grid-template-columns: 1fr;
   }
 
+  .steps-grid {
+    gap: 48px;
+    width: min(100% - 24px, 1200px);
+    min-height: auto;
+  }
+
+  .steps-grid::before {
+    left: 0;
+    right: 0;
+    top: -34px;
+    height: calc(100% + 68px);
+    background-size: 92px 56px;
+  }
+
+  .steps-grid article {
+    min-height: auto;
+  }
+
+  .steps-grid h3 {
+    font-size: 22px;
+  }
+
+  .steps-grid p {
+    max-width: 360px;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
   .feature-section {
     padding-top: 72px;
     padding-bottom: 80px;
@@ -2593,8 +2742,8 @@ p {
     border-radius: 22px;
   }
 
-  .steps-grid span {
-    margin-bottom: 46px;
+  .steps-grid .step-icon {
+    margin-bottom: 24px;
   }
 
   .why-shot {

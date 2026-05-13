@@ -59,14 +59,20 @@ const steps = [
   {
     title: "选择建筑",
     text: "客户进入 App 后切换名下园区或建筑，查看对应的最新安全状态。",
+    icon: "ri-building-2-line",
+    tone: "deep-blue",
   },
   {
     title: "查看风险",
     text: "从评分、异常分类和风险摘要进入问题详情，核对照片、标准和位置。",
+    icon: "ri-radar-line",
+    tone: "red",
   },
   {
     title: "跟进整改",
     text: "根据建议时限和处理状态持续跟进，并长期保留评估记录。",
+    icon: "ri-shield-check-line",
+    tone: "blue",
   },
 ]
 
@@ -319,8 +325,10 @@ onBeforeUnmount(() => {
         <p>客户打开 App 后，即可从建筑概览进入风险详情，再持续跟进整改结果。</p>
       </div>
       <div class="steps-grid">
-        <article v-for="(step, index) in steps" :key="step.title">
-          <span>{{ String(index + 1).padStart(2, "0") }}</span>
+        <article v-for="step in steps" :key="step.title">
+          <span class="step-icon" :class="`tone-${step.tone}`">
+            <i :class="step.icon" aria-hidden="true"></i>
+          </span>
           <h3>{{ step.title }}</h3>
           <p>{{ step.text }}</p>
         </article>
