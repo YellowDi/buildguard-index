@@ -166,6 +166,7 @@ const faqs = [
 ]
 
 let observer
+let testimonialTimer
 const testimonialTrack = ref(null)
 
 function updateHeroProgress() {
@@ -178,12 +179,32 @@ function scrollTestimonials(direction) {
   if (!track) return
 
   const card = track.querySelector(".testimonial-card")
-  const distance = card ? card.getBoundingClientRect().width + 40 : track.clientWidth * 0.82
+  const gap = Number.parseFloat(window.getComputedStyle(track).columnGap) || 0
+  const distance = card ? card.getBoundingClientRect().width + gap : track.clientWidth * 0.82
+  const maxScroll = track.scrollWidth - track.clientWidth
+  const nextLeft = track.scrollLeft + distance * direction
+
+  if (direction > 0 && nextLeft >= maxScroll - 4) {
+    track.scrollTo({ left: 0, behavior: "smooth" })
+    return
+  }
+
+  if (direction < 0 && nextLeft <= 0) {
+    track.scrollTo({ left: maxScroll, behavior: "smooth" })
+    return
+  }
 
   track.scrollBy({
-    left: distance * direction,
+    left: nextLeft - track.scrollLeft,
     behavior: "smooth",
   })
+}
+
+function startTestimonialAutoplay() {
+  window.clearInterval(testimonialTimer)
+  testimonialTimer = window.setInterval(() => {
+    scrollTestimonials(1)
+  }, 3200)
 }
 
 onMounted(() => {
@@ -203,10 +224,12 @@ onMounted(() => {
   )
 
   document.querySelectorAll(".reveal-on-scroll").forEach((el) => observer.observe(el))
+  startTestimonialAutoplay()
 })
 
 onBeforeUnmount(() => {
   window.removeEventListener("scroll", updateHeroProgress)
+  window.clearInterval(testimonialTimer)
   observer?.disconnect()
 })
 </script>
@@ -491,17 +514,17 @@ onBeforeUnmount(() => {
             </article>
           </div>
         </div>
-      </div>
-    </section>
 
-    <section class="client-strip reveal-on-scroll" aria-label="适用客户">
-      <p>适用于多类建筑安全服务客户</p>
-      <div class="client-window">
-        <div class="client-track">
-          <span v-for="(client, index) in clientTicker" :key="`${client}-${index}`">
-            {{ client }}
-          </span>
-        </div>
+        <section class="client-strip" aria-label="适用客户">
+          <p>适用于多类建筑安全服务客户</p>
+          <div class="client-window">
+            <div class="client-track">
+              <span v-for="(client, index) in clientTicker" :key="`${client}-${index}`">
+                {{ client }}
+              </span>
+            </div>
+          </div>
+        </section>
       </div>
     </section>
 

@@ -2211,6 +2211,10 @@ p {
   text-align: center;
 }
 
+.testimonial-section .client-strip {
+  padding: 76px 0 0;
+}
+
 .client-strip p {
   margin-bottom: 28px;
   color: var(--muted);
@@ -2218,11 +2222,20 @@ p {
   font-weight: 800;
 }
 
+.testimonial-section .client-strip p {
+  color: rgba(255, 255, 255, 0.76);
+}
+
 .client-window {
   width: min(980px, calc(100% - 60px));
   margin: 0 auto;
   overflow: hidden;
   mask-image: linear-gradient(to right, transparent, #000 14%, #000 86%, transparent);
+}
+
+.testimonial-section .client-window {
+  width: min(980px, 100%);
+  mask-image: linear-gradient(to right, transparent, #000 9%, #000 91%, transparent);
 }
 
 .client-track {
@@ -2244,6 +2257,11 @@ p {
   background: #f4f7fb;
   font-size: 18px;
   font-weight: 900;
+}
+
+.testimonial-section .client-track span {
+  color: rgba(255, 255, 255, 0.88);
+  background: rgba(255, 255, 255, 0.14);
 }
 
 .faq-section {
