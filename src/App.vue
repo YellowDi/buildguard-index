@@ -12,6 +12,7 @@ import upwizeIconInsightsUrl from "./assets/upwize-icon-insights.svg"
 import upwizeIconTrendsUrl from "./assets/upwize-icon-trends.svg"
 import upwizePhoneShapeUrl from "./assets/upwize-phone-shape.png"
 import upwizeShapeUrl from "./assets/upwize-shape.svg"
+import upwizeWhyGridUrl from "./assets/upwize-why-grid.svg"
 
 const heroAvatars = ["管", "业", "维"]
 
@@ -80,18 +81,26 @@ const reasons = [
   {
     title: "客户视角清晰",
     text: "把专业检测结论转成客户能快速理解的评分、风险说明和整改重点。",
+    icon: "ri-fingerprint-line",
+    tone: "blue",
   },
   {
     title: "风险状态清楚",
     text: "报告、风险项和整改结果更新后，客户 App 端展示最新状态。",
+    icon: "ri-equalizer-line",
+    tone: "red",
   },
   {
     title: "一键查看报告",
     text: "核心结论、图片证据和后续建议集中呈现，减少反复沟通。",
+    icon: "ri-file-search-line",
+    tone: "orange",
   },
   {
     title: "长期服务档案",
     text: "每一次检测和整改都会进入项目档案，方便后续复查。",
+    icon: "ri-archive-stack-line",
+    tone: "deep-blue",
   },
 ]
 
@@ -336,26 +345,32 @@ onBeforeUnmount(() => {
     </section>
 
     <section class="why-section section-shell reveal-on-scroll">
-      <div class="section-heading center">
+      <div class="why-panel">
+        <img class="why-grid-bg" :src="upwizeWhyGridUrl" alt="" aria-hidden="true" />
         <h2>为什么客户会愿意打开宝京云维？</h2>
-      </div>
-      <div class="why-layout">
-        <div class="why-column">
-          <article v-for="reason in reasons.slice(0, 2)" :key="reason.title">
-            <span></span>
-            <h3>{{ reason.title }}</h3>
-            <p>{{ reason.text }}</p>
-          </article>
-        </div>
-        <figure class="app-shot why-shot">
-          <img :src="appHomeUrl" alt="宝京云维客户 App 项目首页" />
-        </figure>
-        <div class="why-column">
-          <article v-for="reason in reasons.slice(2)" :key="reason.title">
-            <span></span>
-            <h3>{{ reason.title }}</h3>
-            <p>{{ reason.text }}</p>
-          </article>
+        <div class="why-layout">
+          <div class="why-column">
+            <article v-for="reason in reasons.slice(0, 2)" :key="reason.title">
+              <span class="why-icon" :class="`tone-${reason.tone}`">
+                <i :class="reason.icon" aria-hidden="true"></i>
+              </span>
+              <h3>{{ reason.title }}</h3>
+              <p>{{ reason.text }}</p>
+            </article>
+          </div>
+          <figure class="why-device" aria-label="宝京云维客户 App 项目首页">
+            <img class="why-device-screen" :src="appHomeUrl" alt="宝京云维客户 App 项目首页" />
+            <img class="why-device-shape" :src="upwizePhoneShapeUrl" alt="" aria-hidden="true" />
+          </figure>
+          <div class="why-column">
+            <article v-for="reason in reasons.slice(2)" :key="reason.title">
+              <span class="why-icon" :class="`tone-${reason.tone}`">
+                <i :class="reason.icon" aria-hidden="true"></i>
+              </span>
+              <h3>{{ reason.title }}</h3>
+              <p>{{ reason.text }}</p>
+            </article>
+          </div>
         </div>
       </div>
     </section>
