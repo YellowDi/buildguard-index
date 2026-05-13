@@ -382,19 +382,58 @@ onBeforeUnmount(() => {
         class="story-card reveal-on-scroll"
         :class="{ reverse: index % 2 === 1 }"
       >
-        <div class="story-visual">
-          <figure class="app-shot story-shot">
-            <img
-              :src="index === 0 ? appRiskUrl : appHomeUrl"
-              :alt="index === 0 ? '宝京云维客户 App 风险提醒界面' : '宝京云维客户 App 报告归档界面'"
-            />
-          </figure>
+        <div class="story-visual" :class="index === 0 ? 'risk-story-visual' : 'report-story-visual'">
+          <template v-if="index === 0">
+            <span class="story-chip story-chip-blue">高风险问题</span>
+            <span class="story-chip story-chip-red">优先处理</span>
+            <figure class="story-device story-device-primary">
+              <img :src="appRiskUrl" alt="宝京云维客户 App 风险提醒界面" />
+            </figure>
+            <article class="story-floating-card risk-alert-card">
+              <span>风险等级</span>
+              <strong>高风险</strong>
+              <small>幕墙连接件松动，建议 24 小时内安排复核。</small>
+            </article>
+            <article class="story-floating-card risk-photo-card">
+              <b></b>
+              <div>
+                <strong>现场照片</strong>
+                <small>3 张证据已同步</small>
+              </div>
+            </article>
+          </template>
+
+          <template v-else>
+            <span class="story-chip story-chip-blue">在线报告</span>
+            <span class="story-chip story-chip-orange">长期留存</span>
+            <article class="story-report-card">
+              <div class="story-report-head">
+                <span>检测报告</span>
+                <strong>已完成</strong>
+              </div>
+              <div class="story-report-metrics">
+                <b>86</b>
+                <span>安全评分</span>
+              </div>
+              <div class="story-report-lines">
+                <i></i>
+                <i></i>
+                <i></i>
+              </div>
+            </article>
+            <figure class="story-device story-device-secondary">
+              <img :src="appHomeUrl" alt="宝京云维客户 App 报告归档界面" />
+            </figure>
+            <article class="story-floating-card archive-card">
+              <strong>历史记录</strong>
+              <small>报告、照片、整改建议自动归档</small>
+            </article>
+          </template>
         </div>
         <div class="story-copy">
           <span class="pill-label">{{ story.label }}</span>
           <h2>{{ story.title }}</h2>
           <p>{{ story.text }}</p>
-          <a class="text-link" href="#cta">了解客户 App</a>
         </div>
       </article>
     </section>

@@ -1718,18 +1718,20 @@ p {
 
 .story-section {
   display: grid;
-  gap: 58px;
+  gap: 80px;
+  padding-top: 118px;
+  padding-bottom: 118px;
 }
 
 .story-card {
   display: grid;
-  grid-template-columns: minmax(0, 0.95fr) minmax(360px, 0.85fr);
-  gap: 64px;
+  grid-template-columns: minmax(0, 58%) minmax(360px, 1fr);
   align-items: center;
+  gap: 72px;
 }
 
 .story-card.reverse {
-  grid-template-columns: minmax(360px, 0.85fr) minmax(0, 0.95fr);
+  grid-template-columns: minmax(360px, 1fr) minmax(0, 58%);
 }
 
 .story-card.reverse .story-visual {
@@ -1738,78 +1740,322 @@ p {
 
 .story-visual {
   position: relative;
-  min-height: 520px;
+  min-height: 556px;
   overflow: hidden;
-  border-radius: 30px;
+  border-radius: 32px;
+  background: #f8f8f8;
+  isolation: isolate;
+}
+
+.story-visual::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
   background:
-    linear-gradient(rgba(255, 255, 255, 0.22) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.22) 1px, transparent 1px),
-    linear-gradient(135deg, #dfeaff, #ffffff);
-  background-size: 112px 112px, 112px 112px, auto;
+    linear-gradient(rgba(8, 101, 255, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(8, 101, 255, 0.055) 1px, transparent 1px);
+  background-size: 34px 34px;
 }
 
-.story-phone {
-  position: absolute;
-  left: 50%;
-  bottom: -84px;
-  width: 300px;
-  min-height: 596px;
-  padding: 58px 20px 22px;
-  transform: translateX(-50%) rotate(-5deg);
+.risk-story-visual {
+  background:
+    radial-gradient(circle at 18% 12%, rgba(8, 101, 255, 0.16), transparent 33%),
+    #f8f8f8;
 }
 
-.story-shot {
+.report-story-visual {
+  background:
+    radial-gradient(circle at 78% 20%, rgba(255, 116, 66, 0.18), transparent 31%),
+    #f8f8f8;
+}
+
+.story-chip {
   position: absolute;
+  z-index: 5;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 22px;
+  border-radius: 24px 24px 24px 0;
+  color: #fff;
+  font-size: 15px;
+  line-height: 1;
+  font-weight: 800;
+  box-shadow: 0 16px 34px rgba(12, 39, 86, 0.14);
+  will-change: transform;
+}
+
+.story-chip-blue {
+  left: 44px;
+  top: 48px;
+  background: #0101db;
+  transform: rotate(-8deg);
+  animation: storyChipFloatLeft 5.8s ease-in-out infinite;
+}
+
+.story-chip-red,
+.story-chip-orange {
+  right: 54px;
+  top: 76px;
+  border-radius: 24px 24px 0 24px;
+  transform: rotate(10deg);
+  animation: storyChipFloatRight 6.4s ease-in-out 420ms infinite;
+}
+
+.story-chip-red {
+  background: #e64240;
+}
+
+.story-chip-orange {
+  background: #ff7442;
+}
+
+.story-device {
+  position: absolute;
+  z-index: 2;
+  margin: 0;
+  overflow: hidden;
+  border: 7px solid #070707;
+  border-radius: 42px;
+  background: #fff;
+  box-shadow:
+    0 34px 90px rgba(10, 35, 78, 0.18),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.7);
+  will-change: transform;
+}
+
+.story-device img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.story-device-primary {
   left: 50%;
+  bottom: -122px;
+  width: 302px;
+  aspect-ratio: 804 / 1748;
+  transform: translateX(-50%) rotate(-3.5deg);
+  animation: storyDevicePrimaryFloat 7.8s ease-in-out 180ms infinite;
+}
+
+.story-device-secondary {
+  right: 78px;
   bottom: -116px;
-  width: 292px;
-  border-color: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 26px 74px rgba(31, 67, 124, 0.18);
-  transform: translateX(-50%) rotate(-4deg);
+  width: 280px;
+  aspect-ratio: 804 / 1748;
+  transform: rotate(4deg);
+  animation: storyDeviceSecondaryFloat 8.2s ease-in-out 260ms infinite;
 }
 
-.story-card.reverse .story-shot {
-  transform: translateX(-50%) rotate(4deg);
+.story-floating-card,
+.story-report-card {
+  position: absolute;
+  z-index: 4;
+  border-radius: 28px;
+  background: #fff;
+  box-shadow: 0 22px 60px rgba(15, 41, 80, 0.12);
+  will-change: transform;
 }
 
-.story-phone > span {
-  color: var(--muted);
+.story-floating-card strong,
+.story-floating-card small,
+.story-floating-card span {
+  display: block;
+}
+
+.story-floating-card small,
+.story-floating-card span {
+  color: #666a73;
+}
+
+.risk-alert-card {
+  left: 42px;
+  bottom: 82px;
+  width: 236px;
+  padding: 24px;
+  transform: rotate(4deg);
+  animation: storyCardFloatSoft 6.8s ease-in-out 120ms infinite;
+}
+
+.risk-alert-card span {
+  margin-bottom: 10px;
+  color: #e64240;
   font-size: 13px;
   font-weight: 800;
 }
 
-.story-phone > strong {
-  display: block;
-  margin-top: 18px;
-  color: var(--red);
-  font-size: 42px;
+.risk-alert-card strong {
+  margin-bottom: 10px;
+  font-size: 30px;
+  line-height: 1.08;
 }
 
-.story-lines {
+.risk-alert-card small {
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.risk-photo-card {
+  right: 34px;
+  bottom: 112px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 224px;
+  padding: 16px;
+  transform: rotate(-5deg);
+  animation: storyCardFloatReverse 7.2s ease-in-out 520ms infinite;
+}
+
+.risk-photo-card b {
+  flex: 0 0 auto;
+  width: 58px;
+  height: 58px;
+  border-radius: 18px;
+  background:
+    linear-gradient(135deg, transparent 0 48%, rgba(255, 255, 255, 0.95) 49% 58%, transparent 59%),
+    #e64240;
+}
+
+.risk-photo-card strong {
+  margin-bottom: 4px;
+  font-size: 16px;
+}
+
+.risk-photo-card small {
+  font-size: 13px;
+}
+
+.story-report-card {
+  left: 50px;
+  top: 132px;
+  width: 390px;
+  padding: 30px;
+  animation: storyReportFloat 7.6s ease-in-out 240ms infinite;
+}
+
+.story-report-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 30px;
+}
+
+.story-report-head span {
+  color: #666a73;
+  font-size: 16px;
+}
+
+.story-report-head strong {
+  min-height: 36px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  color: #fff;
+  background: #0865ff;
+  font-size: 14px;
+}
+
+.story-report-metrics {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: end;
+  gap: 14px;
+  margin-bottom: 30px;
+}
+
+.story-report-metrics b {
+  color: #0101db;
+  font-size: 78px;
+  line-height: 0.9;
+  font-weight: 800;
+}
+
+.story-report-metrics span {
+  color: #666a73;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.story-report-lines {
   display: grid;
   gap: 12px;
-  margin-top: 40px;
 }
 
-.story-lines i {
-  height: 70px;
-  border-radius: 20px;
-  background: #f2f5fb;
+.story-report-lines i {
+  height: 18px;
+  border-radius: 999px;
+  background: #edf0f5;
 }
 
-.story-lines i:first-child {
-  background: #eaf2ff;
+.story-report-lines i:nth-child(1) {
+  width: 88%;
+}
+
+.story-report-lines i:nth-child(2) {
+  width: 72%;
+  background: #dfeaff;
+}
+
+.story-report-lines i:nth-child(3) {
+  width: 56%;
+}
+
+.archive-card {
+  left: 100px;
+  bottom: 76px;
+  width: 286px;
+  padding: 22px 24px;
+  transform: rotate(-4deg);
+  animation: storyCardFloatReverse 7s ease-in-out 640ms infinite;
+}
+
+.archive-card strong {
+  margin-bottom: 8px;
+  font-size: 22px;
+}
+
+.archive-card small {
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.story-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.story-copy .pill-label {
+  min-height: auto;
+  margin-bottom: 18px;
+  padding: 0;
+  border-radius: 0;
+  color: var(--blue);
+  background: transparent;
+  font-size: 18px;
+  line-height: 1.5;
 }
 
 .story-copy h2 {
-  max-width: 540px;
+  max-width: 520px;
+  margin-bottom: 20px;
+  font-size: 42px;
+  line-height: 1.18;
+  font-weight: 800;
 }
 
 .story-copy p {
-  max-width: 560px;
-  color: var(--muted);
-  font-size: 17px;
-  line-height: 1.8;
+  max-width: 520px;
+  margin-bottom: 28px;
+  color: #616161;
+  font-size: 16px;
+  line-height: 1.7;
 }
 
 .testimonial-section {
@@ -2231,6 +2477,97 @@ p {
   }
 }
 
+@keyframes storyChipFloatLeft {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-8deg);
+  }
+  46% {
+    transform: translate3d(8px, -9px, 0) rotate(-5.5deg);
+  }
+  74% {
+    transform: translate3d(-4px, 5px, 0) rotate(-10deg);
+  }
+}
+
+@keyframes storyChipFloatRight {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(10deg);
+  }
+  42% {
+    transform: translate3d(-8px, -10px, 0) rotate(12.5deg);
+  }
+  76% {
+    transform: translate3d(4px, 6px, 0) rotate(8deg);
+  }
+}
+
+@keyframes storyDevicePrimaryFloat {
+  0%,
+  100% {
+    transform: translateX(-50%) translate3d(0, 0, 0) rotate(-3.5deg);
+  }
+  44% {
+    transform: translateX(-50%) translate3d(0, -12px, 0) rotate(-2.4deg);
+  }
+  72% {
+    transform: translateX(-50%) translate3d(4px, 6px, 0) rotate(-4.3deg);
+  }
+}
+
+@keyframes storyDeviceSecondaryFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(4deg);
+  }
+  46% {
+    transform: translate3d(-6px, -11px, 0) rotate(5.2deg);
+  }
+  76% {
+    transform: translate3d(5px, 6px, 0) rotate(3.2deg);
+  }
+}
+
+@keyframes storyCardFloatSoft {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(4deg);
+  }
+  45% {
+    transform: translate3d(7px, -10px, 0) rotate(5.4deg);
+  }
+  74% {
+    transform: translate3d(-4px, 5px, 0) rotate(3.2deg);
+  }
+}
+
+@keyframes storyCardFloatReverse {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-5deg);
+  }
+  42% {
+    transform: translate3d(-7px, -9px, 0) rotate(-6.4deg);
+  }
+  76% {
+    transform: translate3d(5px, 6px, 0) rotate(-4deg);
+  }
+}
+
+@keyframes storyReportFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  46% {
+    transform: translate3d(6px, -10px, 0);
+  }
+  76% {
+    transform: translate3d(-4px, 5px, 0);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -2240,7 +2577,11 @@ p {
   .reveal-on-scroll,
   .client-track,
   .analytics-cloud,
-  .hero-badge {
+  .hero-badge,
+  .story-chip,
+  .story-device,
+  .story-floating-card,
+  .story-report-card {
     animation: none;
     transition-duration: 0ms;
   }
@@ -2392,6 +2733,15 @@ p {
 
   .story-card.reverse .story-visual {
     order: 0;
+  }
+
+  .story-card,
+  .story-card.reverse {
+    gap: 42px;
+  }
+
+  .story-copy {
+    max-width: 620px;
   }
 
   .stats-grid {
@@ -2943,9 +3293,94 @@ p {
     border-radius: 24px;
   }
 
-  .story-shot {
-    bottom: -104px;
-    width: 250px;
+  .story-section {
+    gap: 64px;
+    padding-top: 76px;
+    padding-bottom: 76px;
+  }
+
+  .story-copy .pill-label {
+    margin-bottom: 12px;
+    font-size: 16px;
+  }
+
+  .story-copy h2 {
+    font-size: 32px;
+    line-height: 1.16;
+  }
+
+  .story-copy p {
+    font-size: 16px;
+  }
+
+  .story-chip {
+    min-height: 40px;
+    padding: 0 16px;
+    font-size: 13px;
+  }
+
+  .story-chip-blue {
+    left: 22px;
+    top: 28px;
+  }
+
+  .story-chip-red,
+  .story-chip-orange {
+    right: 20px;
+    top: 42px;
+  }
+
+  .story-device-primary {
+    bottom: -92px;
+    width: 226px;
+  }
+
+  .story-device-secondary {
+    right: 24px;
+    bottom: -90px;
+    width: 210px;
+  }
+
+  .risk-alert-card {
+    left: 18px;
+    bottom: 58px;
+    width: 190px;
+    padding: 18px;
+  }
+
+  .risk-alert-card strong {
+    font-size: 24px;
+  }
+
+  .risk-photo-card {
+    right: 14px;
+    bottom: 80px;
+    width: 184px;
+    padding: 12px;
+  }
+
+  .risk-photo-card b {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+  }
+
+  .story-report-card {
+    left: 18px;
+    top: 98px;
+    width: min(72%, 320px);
+    padding: 22px;
+  }
+
+  .story-report-metrics b {
+    font-size: 58px;
+  }
+
+  .archive-card {
+    left: 28px;
+    bottom: 56px;
+    width: 218px;
+    padding: 18px;
   }
 
   .client-window {
