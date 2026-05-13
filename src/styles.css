@@ -2378,6 +2378,14 @@ p {
   text-align: left;
 }
 
+.faq-item.is-open .faq-question {
+  padding-bottom: 0;
+}
+
+.faq-question:focus {
+  outline: none;
+}
+
 .faq-question span {
   width: 92%;
   font-size: 18px;
@@ -2403,15 +2411,16 @@ p {
 .faq-answer {
   display: grid;
   grid-template-rows: 0fr;
-  margin-top: -40px;
   padding: 0 40px;
   transition:
     grid-template-rows 240ms cubic-bezier(0.2, 0, 0, 1),
+    padding-top 240ms cubic-bezier(0.2, 0, 0, 1),
     padding-bottom 240ms cubic-bezier(0.2, 0, 0, 1);
 }
 
 .faq-item.is-open .faq-answer {
   grid-template-rows: 1fr;
+  padding-top: 16px;
   padding-bottom: 40px;
 }
 
@@ -3068,16 +3077,15 @@ p {
 
   .faq-question {
     align-items: flex-start;
-    padding: 16px;
+    padding: 40px;
   }
 
   .faq-answer {
-    margin-top: -16px;
-    padding: 0 16px;
+    padding: 0 40px;
   }
 
   .faq-item.is-open .faq-answer {
-    padding-bottom: 16px;
+    padding-bottom: 40px;
   }
 }
 
@@ -3722,7 +3730,7 @@ p {
   }
 
   .faq-question {
-    padding: 24px;
+    padding: 16px;
   }
 
   .faq-question span {
@@ -3730,12 +3738,12 @@ p {
   }
 
   .faq-answer {
-    margin-top: -24px;
-    padding: 0 24px;
+    padding: 0 16px;
   }
 
   .faq-item.is-open .faq-answer {
-    padding-bottom: 24px;
+    padding-top: 16px;
+    padding-bottom: 16px;
   }
 
   .site-footer {
