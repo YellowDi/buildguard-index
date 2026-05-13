@@ -142,6 +142,7 @@ const testimonialItems = [
 ]
 
 const testimonials = [...testimonialItems, ...testimonialItems, ...testimonialItems]
+const testimonialBaseCount = testimonialItems.length
 
 const clientLogos = ["物业集团", "园区客户", "业委会", "商业楼宇", "资产管理", "城市更新", "企业客户"]
 const clientTicker = [...clientLogos, ...clientLogos]
@@ -174,30 +175,54 @@ function updateHeroProgress() {
   document.documentElement.style.setProperty("--hero-scroll", progress.toFixed(3))
 }
 
-function scrollTestimonials(direction) {
+function getTestimonialStep() {
   const track = testimonialTrack.value
-  if (!track) return
+  if (!track) return 0
 
   const card = track.querySelector(".testimonial-card")
   const gap = Number.parseFloat(window.getComputedStyle(track).columnGap) || 0
-  const distance = card ? card.getBoundingClientRect().width + gap : track.clientWidth * 0.82
-  const maxScroll = track.scrollWidth - track.clientWidth
-  const nextLeft = track.scrollLeft + distance * direction
+  return card ? card.getBoundingClientRect().width + gap : track.clientWidth * 0.82
+}
 
-  if (direction > 0 && nextLeft >= maxScroll - 4) {
-    track.scrollTo({ left: 0, behavior: "smooth" })
-    return
+function normalizeTestimonialPosition() {
+  const track = testimonialTrack.value
+  const step = getTestimonialStep()
+  if (!track || !step) return
+
+  const loopWidth = step * testimonialBaseCount
+  const minLeft = loopWidth * 0.5
+  const maxLeft = loopWidth * 1.5
+
+  if (track.scrollLeft < minLeft) {
+    track.scrollLeft += loopWidth
   }
 
-  if (direction < 0 && nextLeft <= 0) {
-    track.scrollTo({ left: maxScroll, behavior: "smooth" })
-    return
+  if (track.scrollLeft > maxLeft) {
+    track.scrollLeft -= loopWidth
   }
+}
+
+function resetTestimonialPosition() {
+  const track = testimonialTrack.value
+  const step = getTestimonialStep()
+  if (!track || !step) return
+
+  track.scrollLeft = step * testimonialBaseCount
+}
+
+function scrollTestimonials(direction) {
+  const track = testimonialTrack.value
+  const distance = getTestimonialStep()
+  if (!track || !distance) return
+
+  normalizeTestimonialPosition()
 
   track.scrollBy({
-    left: nextLeft - track.scrollLeft,
+    left: distance * direction,
     behavior: "smooth",
   })
+
+  window.setTimeout(normalizeTestimonialPosition, 520)
 }
 
 function startTestimonialAutoplay() {
@@ -224,6 +249,7 @@ onMounted(() => {
   )
 
   document.querySelectorAll(".reveal-on-scroll").forEach((el) => observer.observe(el))
+  window.requestAnimationFrame(resetTestimonialPosition)
   startTestimonialAutoplay()
 })
 
