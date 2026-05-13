@@ -36,22 +36,22 @@ const featureCards = [
   {
     title: "建筑安全首页",
     text: "建筑切换、健康评分、健康状态和风险摘要集中在首页展示。",
-    tone: "blue",
+    visual: "overview",
   },
   {
     title: "风险问题穿透",
     text: "从异常分类进入具体问题点，查看扣分原因、位置描述和现场照片。",
-    tone: "red",
+    visual: "risk",
   },
   {
     title: "整改建议明确",
     text: "高危问题优先标记，并给出整改措施、建议时限和专家/AI 综合建议。",
-    tone: "green",
+    visual: "advice",
   },
   {
     title: "历史与服务留存",
     text: "历史评估、下次检测提醒、报修入口和资产套餐信息统一留存。",
-    tone: "violet",
+    visual: "history",
   },
 ]
 
@@ -275,26 +275,42 @@ onBeforeUnmount(() => {
 
     <section id="app-features" class="feature-section section-shell">
       <div class="section-heading reveal-on-scroll">
-        <a class="text-link" href="#cta">查看客户 App</a>
         <h2>客户 App 的核心功能</h2>
         <p>围绕客户最关心的建筑状态、风险证据、整改建议和历史服务记录组织信息。</p>
       </div>
-      <div class="feature-card-grid">
-        <article
-          v-for="(feature, index) in featureCards"
-          :key="feature.title"
-          class="feature-card reveal-on-scroll"
-          :class="`tone-${feature.tone}`"
-          :style="{ '--delay': `${index * 90}ms` }"
-        >
-          <div class="feature-shape" aria-hidden="true"></div>
-          <div class="feature-screen">
-            <span></span><span></span><span></span>
-          </div>
-          <h3>{{ feature.title }}</h3>
-          <p>{{ feature.text }}</p>
-        </article>
+      <div class="feature-card-grid" aria-label="客户 App 核心功能列表">
+        <div class="feature-row feature-row-top">
+          <article
+            v-for="(feature, index) in featureCards.slice(0, 2)"
+            :key="feature.title"
+            class="feature-card reveal-on-scroll"
+            :class="[`feature-card-${index + 1}`, `visual-${feature.visual}`]"
+            :style="{ '--delay': `${index * 90}ms` }"
+          >
+            <div class="feature-title-wrapper">
+              <h3>{{ feature.title }}</h3>
+              <p>{{ feature.text }}</p>
+            </div>
+            <div class="feature-card-image-wrapper" aria-hidden="true"></div>
+          </article>
+        </div>
+        <div class="feature-row feature-row-bottom">
+          <article
+            v-for="(feature, index) in featureCards.slice(2)"
+            :key="feature.title"
+            class="feature-card reveal-on-scroll"
+            :class="[`feature-card-${index + 3}`, `visual-${feature.visual}`]"
+            :style="{ '--delay': `${(index + 2) * 90}ms` }"
+          >
+            <div class="feature-title-wrapper">
+              <h3>{{ feature.title }}</h3>
+              <p>{{ feature.text }}</p>
+            </div>
+            <div class="feature-card-image-wrapper" aria-hidden="true"></div>
+          </article>
+        </div>
       </div>
+      <a class="feature-cta" href="#cta">查看客户 App</a>
     </section>
 
     <section id="workflow" class="steps-section section-shell reveal-on-scroll">
