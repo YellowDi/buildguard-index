@@ -169,6 +169,7 @@ const faqs = [
 let observer
 let testimonialTimer
 const testimonialTrack = ref(null)
+const activeFaqIndex = ref(0)
 
 function updateHeroProgress() {
   const progress = Math.min(window.scrollY / 620, 1)
@@ -230,6 +231,10 @@ function startTestimonialAutoplay() {
   testimonialTimer = window.setInterval(() => {
     scrollTestimonials(1)
   }, 3200)
+}
+
+function toggleFaq(index) {
+  activeFaqIndex.value = activeFaqIndex.value === index ? -1 : index
 }
 
 onMounted(() => {
@@ -556,15 +561,44 @@ onBeforeUnmount(() => {
 
     <section id="faq" class="faq-section section-shell reveal-on-scroll">
       <div class="faq-aside">
-        <h2>Questions<br />and answers</h2>
-        <p>客户 App 的建筑信息、风险证据、历史报告和报修方式。</p>
-        <a class="button primary" href="#cta">联系我们</a>
+        <div class="faq-title">
+          <h2>Questions<br />and answers</h2>
+          <p>客户 App 的建筑信息、风险证据、历史报告和报修方式。</p>
+        </div>
+        <aside class="faq-contact-card" aria-label="更多问题">
+          <div>
+            <strong>还有其他问题？</strong>
+            <p>联系我们获取更多信息。</p>
+          </div>
+          <a class="button primary" href="#cta">联系我们</a>
+        </aside>
       </div>
       <div class="faq-list">
-        <details v-for="(faq, index) in faqs" :key="faq.q" :open="index === 0">
-          <summary>{{ faq.q }}</summary>
-          <p>{{ faq.a }}</p>
-        </details>
+        <article
+          v-for="(faq, index) in faqs"
+          :key="faq.q"
+          class="faq-item"
+          :class="{ 'is-open': activeFaqIndex === index }"
+        >
+          <button
+            type="button"
+            class="faq-question"
+            :aria-expanded="activeFaqIndex === index"
+            :aria-controls="`faq-answer-${index}`"
+            @click="toggleFaq(index)"
+          >
+            <span>{{ faq.q }}</span>
+            <i class="ri-arrow-up-s-line" aria-hidden="true"></i>
+          </button>
+          <div
+            :id="`faq-answer-${index}`"
+            class="faq-answer"
+            role="region"
+            :aria-hidden="activeFaqIndex !== index"
+          >
+            <p>{{ faq.a }}</p>
+          </div>
+        </article>
       </div>
     </section>
   </main>
