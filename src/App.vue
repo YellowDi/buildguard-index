@@ -38,23 +38,23 @@ const analyticsItems = [
 
 const featureCards = [
   {
-    title: "建筑安全首页",
-    text: "建筑切换、健康评分、健康状态和风险摘要集中在首页展示。",
+    title: "首页一眼看全局",
+    text: "切换建筑，查看评分和风险摘要，所有关键信息首页直达。",
     visual: "overview",
   },
   {
-    title: "风险问题穿透",
-    text: "从异常分类进入具体问题点，查看扣分原因、位置描述和现场照片。",
+    title: "哪里有问题，点进去就看到",
+    text: "从异常分类逐层深入，扣分原因、定位、现场照片逐一对照。",
     visual: "risk",
   },
   {
-    title: "整改建议明确",
-    text: "高危问题优先标记，并给出整改措施、建议时限和专家/AI 综合建议。",
+    title: "怎么改、什么时候改、谁来改",
+    text: "高危优先标红，整改措施、完成时限、专家与 AI 建议同步推送。",
     visual: "advice",
   },
   {
-    title: "历史与服务留存",
-    text: "历史评估、下次检测提醒、报修入口和资产套餐信息统一留存。",
+    title: "每次检测都有据可查",
+    text: "检测记录长期归档，下次检测自动提醒，报修随时可提。",
     visual: "history",
   },
 ]
@@ -82,7 +82,7 @@ const steps = [
 
 const reasons = [
   {
-    title: "客户视角清晰",
+    title: "不用懂检测，也能看懂结论",
     text: "把专业检测结论转成客户能快速理解的评分、风险说明和整改重点。",
     icon: "ri-fingerprint-line",
     tone: "blue",
@@ -94,13 +94,13 @@ const reasons = [
     tone: "red",
   },
   {
-    title: "一键查看报告",
+    title: "报告不用找，打开就在",
     text: "核心结论、图片证据和后续建议集中呈现，减少反复沟通。",
     icon: "ri-file-search-line",
     tone: "orange",
   },
   {
-    title: "长期服务档案",
+    title: "每次检测都自动归档",
     text: "每一次检测和整改都会进入项目档案，方便后续复查。",
     icon: "ri-archive-stack-line",
     tone: "deep-blue",
@@ -122,21 +122,21 @@ const storyCards = [
 
 const testimonialItems = [
   {
-    quote: "风险项展示比 PDF 更直观，照片、位置、整改建议都在一起，客户沟通效率明显提高。",
-    name: "Michael Bennett",
-    role: "App Designer",
+    quote: "以前发 PDF 客户还要打电话问，现在风险照片和整改建议都在 App 里，沟通量少了一半。",
+    name: "物业经理",
+    role: "物业项目经理",
     avatar: avatarMichaelUrl,
   },
   {
-    quote: "使用宝京云维的数据分析后，我们更清楚项目风险趋势，也更有把握推动整改决策。",
-    name: "Top Clofen",
-    role: "product Designer",
+    quote: "看着评分趋势图跟业主开会，说服力比以前强很多。",
+    name: "项目负责人",
+    role: "设施管理负责人",
     avatar: avatarTopUrl,
   },
   {
-    quote: "过去业主总要在群里追问报告进度，现在他们打开 App 就能看到检测状态和预计交付时间。",
-    name: "James Thompson",
-    role: "product Designer",
+    quote: "业主不用在群里追了，打开 App 就知道报告到哪一步了。",
+    name: "业委会代表",
+    role: "业委会主任",
     avatar: avatarJamesUrl,
   },
 ]
@@ -281,7 +281,7 @@ onBeforeUnmount(() => {
 
         <div class="hero-lower">
           <div class="hero-proof hero-enter enter-2">
-            <p>宝京云维将安全评分、风险点、现场照片、整改建议和历史报告集中到客户 App。</p>
+            <p>评分、风险、照片、整改进度、历史报告<br />一个 App 全部到位。</p>
             <div class="avatar-row" aria-label="客户使用者">
               <span v-for="avatar in heroAvatars" :key="avatar">{{ avatar }}</span>
             </div>
@@ -423,7 +423,7 @@ onBeforeUnmount(() => {
     <section class="why-section section-shell reveal-on-scroll">
       <div class="why-panel">
         <img class="why-grid-bg" :src="upwizeWhyGridUrl" alt="" aria-hidden="true" />
-        <h2>为什么客户会愿意打开宝京云维？</h2>
+        <h2>客户为什么持续在用？</h2>
         <div class="why-layout">
           <div class="why-column">
             <article v-for="reason in reasons.slice(0, 2)" :key="reason.title">
